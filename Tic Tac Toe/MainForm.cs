@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace Tic_Tac_Toe
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
+            Game game = new Game();
+            game.GameBoard.InitBoard();       
         }
     }
 }
