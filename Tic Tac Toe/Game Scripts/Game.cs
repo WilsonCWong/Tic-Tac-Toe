@@ -26,23 +26,27 @@ namespace Tic_Tac_Toe
             Grid = new Cell[COLS, ROWS];
         }
 
-        public enum State { Empty, O, X }
-        
-        public struct Cell
-        {
-            public State CellState { get; set; }
-        }
-
+        //Initialize the board and set all cells to empty.
         public void InitBoard()
         {
             for (int row = 0; row < ROWS; row++)
             {
                 for (int col = 0; col < COLS; col++)
                 {
-                    Grid[row, col].CellState = State.Empty;
+                    Grid[row, col].CellPiece = Piece.None;
                 }
             }
         }
+    }
 
+    public enum Piece { None, X, O }
+
+    public struct Cell
+    {
+        public Piece CellPiece { get; set; }
+        public Cell (Piece p)
+        {
+            CellPiece = p;
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Tic_Tac_Toe
 {
-    partial class MainForm
+    partial class QuickMatchForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,15 @@
         {
             this.SuspendLayout();
             // 
-            // MainForm
+            // QuickMatchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Name = "MainForm";
-            this.Text = "Form1";
+            this.BackgroundImage = global::Tic_Tac_Toe.Properties.Resources.blurredbg;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Name = "QuickMatchForm";
+            this.Text = "Tic Tac Toe - Quick Match";
             this.ResumeLayout(false);
 
         }
@@ -44,4 +46,3 @@
         #endregion
     }
 }
-
