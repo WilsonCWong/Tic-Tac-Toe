@@ -37,8 +37,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.tournamentButton = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -72,7 +72,7 @@
             // quickMatchButton
             // 
             this.quickMatchButton.BackColor = System.Drawing.Color.Transparent;
-            this.quickMatchButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.quickMatchButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.quickMatchButton.FlatAppearance.BorderSize = 0;
             this.quickMatchButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.quickMatchButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -86,8 +86,8 @@
             this.quickMatchButton.Text = "Quick Match";
             this.quickMatchButton.UseVisualStyleBackColor = true;
             this.quickMatchButton.Click += new System.EventHandler(this.quickMatchButton_Click);
-            this.quickMatchButton.MouseLeave += new System.EventHandler(this.menuButton_MouseLeave);
-            this.quickMatchButton.MouseHover += new System.EventHandler(this.menuButton_MouseHover);
+            this.quickMatchButton.MouseHover += new System.EventHandler(CommonEvents.menuButton_MouseHover);
+            this.quickMatchButton.MouseLeave += new System.EventHandler(CommonEvents.menuButton_MouseLeave);
             // 
             // pictureBox1
             // 
@@ -152,43 +152,44 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Win / Loss / Tie";
             // 
-            // button1
+            // tournamentButton
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Minion Pro", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(294, 265);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(197, 50);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Tournament";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.MouseLeave += new System.EventHandler(this.menuButton_MouseLeave);
-            this.button1.MouseHover += new System.EventHandler(this.menuButton_MouseHover);
+            this.tournamentButton.BackColor = System.Drawing.Color.Transparent;
+            this.tournamentButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.tournamentButton.FlatAppearance.BorderSize = 0;
+            this.tournamentButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.tournamentButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.tournamentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tournamentButton.Font = new System.Drawing.Font("Minion Pro", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tournamentButton.ForeColor = System.Drawing.Color.Black;
+            this.tournamentButton.Location = new System.Drawing.Point(294, 265);
+            this.tournamentButton.Name = "tournamentButton";
+            this.tournamentButton.Size = new System.Drawing.Size(197, 50);
+            this.tournamentButton.TabIndex = 2;
+            this.tournamentButton.Text = "Tournament";
+            this.tournamentButton.UseVisualStyleBackColor = true;
+            this.tournamentButton.MouseHover += new System.EventHandler(CommonEvents.menuButton_MouseHover);
+            this.tournamentButton.MouseLeave += new System.EventHandler(CommonEvents.menuButton_MouseLeave);
             // 
-            // button2
+            // exitButton
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Minion Pro", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(353, 342);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(79, 50);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Exit";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.MouseLeave += new System.EventHandler(this.menuButton_MouseLeave);
-            this.button2.MouseHover += new System.EventHandler(this.menuButton_MouseHover);
+            this.exitButton.BackColor = System.Drawing.Color.Transparent;
+            this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.exitButton.FlatAppearance.BorderSize = 0;
+            this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitButton.Font = new System.Drawing.Font("Minion Pro", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitButton.ForeColor = System.Drawing.Color.Black;
+            this.exitButton.Location = new System.Drawing.Point(353, 342);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(79, 50);
+            this.exitButton.TabIndex = 2;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            this.exitButton.MouseHover += new System.EventHandler(CommonEvents.menuButton_MouseHover);
+            this.exitButton.MouseLeave += new System.EventHandler(CommonEvents.menuButton_MouseLeave);
             // 
             // label5
             // 
@@ -227,12 +228,14 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.tournamentButton);
             this.Controls.Add(this.quickMatchButton);
             this.Controls.Add(this.subtitleLabel);
             this.Controls.Add(this.titleLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tic Tac Toe";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -249,8 +252,8 @@
         private System.Windows.Forms.Button quickMatchButton;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button tournamentButton;
+        private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;

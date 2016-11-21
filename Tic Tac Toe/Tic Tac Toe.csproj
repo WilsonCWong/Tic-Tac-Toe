@@ -46,6 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonEvents.cs" />
+    <Compile Include="Forms\PiecePrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PiecePrompt.Designer.cs">
+      <DependentUpon>PiecePrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DifficultyPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DifficultyPrompt.Designer.cs">
+      <DependentUpon>DifficultyPrompt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Game Scripts\AI.cs" />
     <Compile Include="Game Scripts\Game.cs" />
     <Compile Include="Forms\MainForm.cs">
@@ -62,6 +75,12 @@
     <Compile Include="Forms\QuickMatchForm.Designer.cs">
       <DependentUpon>QuickMatchForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\PiecePrompt.resx">
+      <DependentUpon>PiecePrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DifficultyPrompt.resx">
+      <DependentUpon>DifficultyPrompt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +115,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\blurredbg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
