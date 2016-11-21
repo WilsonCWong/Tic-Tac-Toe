@@ -17,6 +17,7 @@ namespace Tic_Tac_Toe
             switch (diff)
             {
                 case Difficulty.Easy:
+                    CalculateEasyMove(ref board);
                     break;
                 case Difficulty.Normal:
                     break;
@@ -27,6 +28,26 @@ namespace Tic_Tac_Toe
                     break;
             }
             return false;
+        }
+
+        private void CalculateEasyMove(ref Board board)
+        {
+            Random rand = new Random();
+            bool piecePlaced = false;
+            int selectedRow;
+            int selectedCol;
+
+            while (!piecePlaced)
+            {
+                selectedRow = rand.Next(3);
+                selectedCol = rand.Next(3);
+                if (board.Grid[selectedRow, selectedCol].CellPiece == Piece.None)
+                {
+                    board.Grid[selectedRow, selectedCol].CellPiece = AIPiece;
+                    piecePlaced = true;
+                }
+            }
+
         }
 
         private int CheckHorizontal(ref Board board, Piece p, int row)

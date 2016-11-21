@@ -29,19 +29,25 @@ namespace Tic_Tac_Toe
             PiecePrompt piecePrompt = new PiecePrompt();
             piecePrompt.ShowDialog();
 
-            playerPiece = (Piece)piecePrompt.selectedPiece;
+            playerPiece = piecePrompt.selectedPiece;
 
-            aiPlayer = new AI();
-            aiPlayer.AIPiece = currentGame.GetOppositePiece(playerPiece);
+            currentGame.aiPlayer = new AI();
+            currentGame.aiPlayer.AIPiece = currentGame.GetOppositePiece(playerPiece);
 
             currentGame.CurrentPlayer = Game.Participant.Player;
             
             gameStarted = true;
+            gameTimer.Start();
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            
+            if (currentGame.CurrentPlayer == Game.Participant.AI)
+            {
+                currentGame.aiPlayer.CalculateMove(ref currentGame.gameBoard, currentGame.GameDifficulty);
+                currentGame.CurrentPlayer = Game.Participant.Player;
+                RepaintGame();
+            }
         }
 
         public void cell_Click(object sender, MouseEventArgs e)
@@ -51,9 +57,9 @@ namespace Tic_Tac_Toe
                 PictureBox pictureBox = (PictureBox)sender;
                 Vector2D coords = CoordFromPictureBox(pictureBox);
 
-                if (currentGame.GameBoard.Grid[coords.x, coords.y].CellPiece == Piece.None)
+                if (currentGame.gameBoard.Grid[coords.x, coords.y].CellPiece == Piece.None)
                 {
-                    currentGame.GameBoard.Grid[coords.x, coords.y].CellPiece = playerPiece;
+                    currentGame.gameBoard.Grid[coords.x, coords.y].CellPiece = playerPiece;
                     currentGame.CurrentPlayer = Game.Participant.AI;
 
                     pictureBox.Image = new Bitmap(GetPiecePicture(playerPiece));
@@ -67,7 +73,7 @@ namespace Tic_Tac_Toe
             PictureBox pictureBox = (PictureBox)sender;
             Vector2D coords = CoordFromPictureBox(pictureBox);
 
-            if (currentGame.GameBoard.Grid[coords.x, coords.y].CellPiece == Piece.None)
+            if (currentGame.gameBoard.Grid[coords.x, coords.y].CellPiece == Piece.None)
             {
                 pictureBox.BackColor = Color.Green;
             }
@@ -114,6 +120,20 @@ namespace Tic_Tac_Toe
             }
 
             return img;
+        }
+
+        private void RepaintGame()
+        {
+            for (int row = 0; row < currentGame.gameBoard.Grid.GetLength(0); row++)
+            {
+                for (int col = 0; col < currentGame.gameBoard.Grid.GetLength(1); col++)
+                {
+                    Piece cellPiece = currentGame.gameBoard.Grid[row, col].CellPiece;
+                    Control pb = Controls["pb_Cell" + row + col];
+                    PictureBox cellPicBox = pb as PictureBox;
+                    cellPicBox.Image = GetPiecePicture(cellPiece);
+                }
+            }
         }
     }
 }

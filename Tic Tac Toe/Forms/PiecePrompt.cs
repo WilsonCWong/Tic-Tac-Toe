@@ -12,7 +12,7 @@ namespace Tic_Tac_Toe
 {
     public partial class PiecePrompt : Form
     {
-        public int selectedPiece;
+        public Piece selectedPiece;
 
         public PiecePrompt()
         {
@@ -23,7 +23,8 @@ namespace Tic_Tac_Toe
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            selectedPiece = pieceDropdown.SelectedIndex;
+            int i = pieceDropdown.SelectedIndex;
+            selectedPiece = (i == 0) ? Piece.X : Piece.O;
             this.Close();
         }
 

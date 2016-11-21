@@ -15,11 +15,11 @@ namespace Tic_Tac_Toe
         public Participant CurrentPlayer { get; set; }
         public Difficulty GameDifficulty { get; set; }
 
-        public Board GameBoard { get; private set; }
+        public Board gameBoard;
 
         public Game(Difficulty d)
         {
-            GameBoard = new Board();
+            gameBoard = new Board();
             GameDifficulty = d;
         }
 

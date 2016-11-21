@@ -49,9 +49,8 @@
             // 
             this.pieceDropdown.FormattingEnabled = true;
             this.pieceDropdown.Items.AddRange(new object[] {
-            "Easy",
-            "Normal",
-            "Advanced"});
+            "X",
+            "O"});
             this.pieceDropdown.Location = new System.Drawing.Point(162, 28);
             this.pieceDropdown.Name = "pieceDropdown";
             this.pieceDropdown.Size = new System.Drawing.Size(121, 21);
