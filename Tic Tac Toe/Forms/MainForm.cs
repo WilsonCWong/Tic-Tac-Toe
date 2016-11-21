@@ -14,26 +14,19 @@ namespace Tic_Tac_Toe
     {
         public MainForm()
         {
-            InitializeComponent();
-            Game game = new Game();
-        }
-
-        private void menuButton_MouseHover(object sender, EventArgs e)
-        {
-            Button button = sender as Button;
-            button.ForeColor = Color.FromArgb(224, 224, 224);
-        }
-
-        private void menuButton_MouseLeave(object sender, EventArgs e)
-        {
-            Button button = sender as Button;
-            button.ForeColor = Color.Black;
+            InitializeComponent();  
         }
 
         private void quickMatchButton_Click(object sender, EventArgs e)
         {
+            quickMatchButton.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
             QuickMatchForm qmForm = new QuickMatchForm();
             qmForm.ShowDialog();
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

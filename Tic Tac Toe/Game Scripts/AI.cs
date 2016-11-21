@@ -11,23 +11,16 @@ namespace Tic_Tac_Toe
     {
         //Determines the piece (X or O) that the AI is controlling.
         public Piece AIPiece { get; set; }
-        public Difficulty Diff { get; set; }
-        public enum Difficulty { Easy, Medium, Hard }
 
-        public AI(Difficulty d)
+        public bool CalculateMove(ref Board board, Difficulty diff)
         {
-            Diff = d;
-        }
-
-        public bool CalculateMove(ref Board board, Piece p)
-        {
-            switch (Diff)
+            switch (diff)
             {
                 case Difficulty.Easy:
                     break;
-                case Difficulty.Medium:
+                case Difficulty.Normal:
                     break;
-                case Difficulty.Hard:
+                case Difficulty.Advanced:
                     break;
                 default:
                     MessageBox.Show("The AI's brain has imploded while calculating a move.");
@@ -41,7 +34,7 @@ namespace Tic_Tac_Toe
             var rowPieces = 0;
             for (int col = 0; col < board.Grid.GetLength(1); col++)
             {
-                if (board.Grid[row, col].CellPiece == Piece.None && board.Grid[row, col].CellPiece != p)
+                if (board.Grid[row, col].CellPiece == p)
                 {
                     rowPieces++;
                 }
@@ -54,7 +47,7 @@ namespace Tic_Tac_Toe
             var colPieces = 0;
             for (int row = 0; row < board.Grid.GetLength(0); row++)
             {
-                if (board.Grid[row, col].CellPiece == Piece.None && board.Grid[row, col].CellPiece != p)
+                if (board.Grid[row, col].CellPiece == p)
                 {
                     colPieces++;
                 }
@@ -78,6 +71,5 @@ namespace Tic_Tac_Toe
             }
             return diagPieces;
         }
-
     }
 }
