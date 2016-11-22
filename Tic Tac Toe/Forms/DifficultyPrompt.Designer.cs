@@ -37,16 +37,17 @@
             // 
             this.difficultyLabel.AutoSize = true;
             this.difficultyLabel.BackColor = System.Drawing.Color.Transparent;
-            this.difficultyLabel.Font = new System.Drawing.Font("Minion Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.difficultyLabel.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.difficultyLabel.ForeColor = System.Drawing.Color.White;
-            this.difficultyLabel.Location = new System.Drawing.Point(9, 29);
+            this.difficultyLabel.Location = new System.Drawing.Point(12, 30);
             this.difficultyLabel.Name = "difficultyLabel";
-            this.difficultyLabel.Size = new System.Drawing.Size(156, 22);
+            this.difficultyLabel.Size = new System.Drawing.Size(150, 17);
             this.difficultyLabel.TabIndex = 0;
             this.difficultyLabel.Text = "Choose your difficulty:";
             // 
             // difficultyDropdown
             // 
+            this.difficultyDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.difficultyDropdown.FormattingEnabled = true;
             this.difficultyDropdown.Items.AddRange(new object[] {
             "Easy",
@@ -64,11 +65,11 @@
             this.okButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.okButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.okButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.okButton.Font = new System.Drawing.Font("Minion Pro", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.okButton.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.okButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.okButton.Location = new System.Drawing.Point(122, 66);
+            this.okButton.Location = new System.Drawing.Point(132, 66);
             this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(75, 32);
+            this.okButton.Size = new System.Drawing.Size(49, 32);
             this.okButton.TabIndex = 2;
             this.okButton.Text = "Ok";
             this.okButton.UseVisualStyleBackColor = false;
@@ -76,8 +77,7 @@
             // 
             // DifficultyPrompt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::Tic_Tac_Toe.Properties.Resources.blurredbg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(313, 110);
@@ -89,6 +89,7 @@
             this.Name = "DifficultyPrompt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Difficulty";
+            this.Load += new System.EventHandler(this.DifficultyPrompt_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -14,7 +14,9 @@ namespace Tic_Tac_Toe
     {
         bool gameStarted;
         Game currentGame;
+        Game.State gameState;
         Piece playerPiece;
+        Piece winnerPiece;
         AI aiPlayer;
 
         public QuickMatchForm()
@@ -37,6 +39,7 @@ namespace Tic_Tac_Toe
             currentGame.CurrentPlayer = Game.Participant.Player;
             
             gameStarted = true;
+            gameState = Game.State.Playing;
             gameTimer.Start();
         }
 
@@ -47,6 +50,12 @@ namespace Tic_Tac_Toe
                 currentGame.aiPlayer.CalculateMove(ref currentGame.gameBoard, currentGame.GameDifficulty);
                 currentGame.CurrentPlayer = Game.Participant.Player;
                 RepaintGame();
+                gameState = currentGame.CheckVictory(out winnerPiece);
+                if (gameState != Game.State.Playing)
+                {
+                    gameTimer.Stop();
+                    MessageBox.Show(gameState.ToString());
+                }
             }
         }
 
@@ -64,6 +73,12 @@ namespace Tic_Tac_Toe
 
                     pictureBox.Image = new Bitmap(GetPiecePicture(playerPiece));
                     cell_Enter(pictureBox, EventArgs.Empty);
+                }
+                gameState = currentGame.CheckVictory(out winnerPiece);
+                if (gameState != Game.State.Playing)
+                {
+                    gameTimer.Stop();
+                    MessageBox.Show(gameState.ToString());
                 }
             }
         }

@@ -26,5 +26,10 @@ namespace Tic_Tac_Toe
             selectedDifficulty = difficultyDropdown.SelectedIndex;
             this.Close();
         }
+
+        private void DifficultyPrompt_Load(object sender, EventArgs e)
+        {
+            difficultyDropdown.SelectedIndex = 0;
+        }
     }
 }

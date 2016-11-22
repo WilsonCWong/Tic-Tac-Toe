@@ -28,5 +28,9 @@ namespace Tic_Tac_Toe
             this.Close();
         }
 
+        private void PiecePrompt_Load(object sender, EventArgs e)
+        {
+            pieceDropdown.SelectedIndex = 0;
+        }
     }
 }

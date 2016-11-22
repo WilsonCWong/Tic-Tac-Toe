@@ -14,7 +14,16 @@ namespace Tic_Tac_Toe
     {
         public MainForm()
         {
-            InitializeComponent();  
+            InitializeComponent();
+
+            this.quickMatchButton.MouseHover += new System.EventHandler(CommonEvents.menuButton_MouseHover);
+            this.quickMatchButton.MouseLeave += new System.EventHandler(CommonEvents.menuButton_MouseLeave);
+
+            this.tournamentButton.MouseHover += new System.EventHandler(CommonEvents.menuButton_MouseHover);
+            this.tournamentButton.MouseLeave += new System.EventHandler(CommonEvents.menuButton_MouseLeave);
+
+                        this.exitButton.MouseHover += new System.EventHandler(CommonEvents.menuButton_MouseHover);
+            this.exitButton.MouseLeave += new System.EventHandler(CommonEvents.menuButton_MouseLeave);
         }
 
         private void quickMatchButton_Click(object sender, EventArgs e)

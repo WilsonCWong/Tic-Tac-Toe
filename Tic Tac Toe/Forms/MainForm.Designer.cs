@@ -77,17 +77,15 @@
             this.quickMatchButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.quickMatchButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.quickMatchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.quickMatchButton.Font = new System.Drawing.Font("Minion Pro", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quickMatchButton.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.quickMatchButton.ForeColor = System.Drawing.Color.Black;
-            this.quickMatchButton.Location = new System.Drawing.Point(294, 188);
+            this.quickMatchButton.Location = new System.Drawing.Point(278, 188);
             this.quickMatchButton.Name = "quickMatchButton";
-            this.quickMatchButton.Size = new System.Drawing.Size(197, 50);
+            this.quickMatchButton.Size = new System.Drawing.Size(229, 50);
             this.quickMatchButton.TabIndex = 2;
             this.quickMatchButton.Text = "Quick Match";
             this.quickMatchButton.UseVisualStyleBackColor = true;
             this.quickMatchButton.Click += new System.EventHandler(this.quickMatchButton_Click);
-            this.quickMatchButton.MouseHover += new System.EventHandler(CommonEvents.menuButton_MouseHover);
-            this.quickMatchButton.MouseLeave += new System.EventHandler(CommonEvents.menuButton_MouseLeave);
             // 
             // pictureBox1
             // 
@@ -107,7 +105,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Minion Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(12, 421);
             this.groupBox1.Name = "groupBox1";
@@ -121,7 +119,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(7, 95);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 22);
+            this.label4.Size = new System.Drawing.Size(94, 17);
             this.label4.TabIndex = 8;
             this.label4.Text = "Highest Score";
             // 
@@ -130,7 +128,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(7, 71);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 22);
+            this.label3.Size = new System.Drawing.Size(119, 17);
             this.label3.TabIndex = 7;
             this.label3.Text = "Tournaments Loss";
             // 
@@ -139,7 +137,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 22);
+            this.label2.Size = new System.Drawing.Size(124, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "Tournaments Won";
             // 
@@ -148,7 +146,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 22);
+            this.label1.Size = new System.Drawing.Size(101, 17);
             this.label1.TabIndex = 5;
             this.label1.Text = "Win / Loss / Tie";
             // 
@@ -160,16 +158,14 @@
             this.tournamentButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.tournamentButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.tournamentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tournamentButton.Font = new System.Drawing.Font("Minion Pro", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tournamentButton.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tournamentButton.ForeColor = System.Drawing.Color.Black;
-            this.tournamentButton.Location = new System.Drawing.Point(294, 265);
+            this.tournamentButton.Location = new System.Drawing.Point(278, 265);
             this.tournamentButton.Name = "tournamentButton";
-            this.tournamentButton.Size = new System.Drawing.Size(197, 50);
+            this.tournamentButton.Size = new System.Drawing.Size(229, 50);
             this.tournamentButton.TabIndex = 2;
             this.tournamentButton.Text = "Tournament";
             this.tournamentButton.UseVisualStyleBackColor = true;
-            this.tournamentButton.MouseHover += new System.EventHandler(CommonEvents.menuButton_MouseHover);
-            this.tournamentButton.MouseLeave += new System.EventHandler(CommonEvents.menuButton_MouseLeave);
             // 
             // exitButton
             // 
@@ -179,27 +175,25 @@
             this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitButton.Font = new System.Drawing.Font("Minion Pro", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitButton.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.ForeColor = System.Drawing.Color.Black;
-            this.exitButton.Location = new System.Drawing.Point(353, 342);
+            this.exitButton.Location = new System.Drawing.Point(354, 342);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(79, 50);
+            this.exitButton.Size = new System.Drawing.Size(77, 50);
             this.exitButton.TabIndex = 2;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
-            this.exitButton.MouseHover += new System.EventHandler(CommonEvents.menuButton_MouseHover);
-            this.exitButton.MouseLeave += new System.EventHandler(CommonEvents.menuButton_MouseLeave);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Minion Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(493, 508);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(145, 22);
+            this.label5.Size = new System.Drawing.Size(144, 17);
             this.label5.TabIndex = 9;
             this.label5.Text = "Welcome back, User.";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -208,19 +202,18 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Minion Pro", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.label6.Location = new System.Drawing.Point(570, 530);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 22);
+            this.label6.Size = new System.Drawing.Size(67, 17);
             this.label6.TabIndex = 9;
             this.label6.Text = "Not you?";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::Tic_Tac_Toe.Properties.Resources.blurredbg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 561);
