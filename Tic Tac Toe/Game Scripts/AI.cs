@@ -20,6 +20,7 @@ namespace Tic_Tac_Toe
                     CalculateEasyMove(ref board);
                     break;
                 case Difficulty.Normal:
+                    CalculateNormalMove(ref board);
                     break;
                 case Difficulty.Advanced:
                     break;
@@ -28,6 +29,25 @@ namespace Tic_Tac_Toe
                     break;
             }
             return false;
+        }
+
+        public Piece GetOppositePiece(Piece p)
+        {
+            Piece otherPiece;
+            switch (p)
+            {
+                case Piece.X:
+                    otherPiece = Piece.O;
+                    break;
+                case Piece.O:
+                    otherPiece = Piece.X;
+                    break;
+                default:
+                    MessageBox.Show("Error determining player's piece.");
+                    otherPiece = p;
+                    break;
+            }
+            return otherPiece;
         }
 
         private void CalculateEasyMove(ref Board board)
@@ -48,6 +68,107 @@ namespace Tic_Tac_Toe
                 }
             }
 
+        }
+
+        private void CalculateNormalMove(ref Board board)
+        {
+            int matches = 0;
+            Vector2D cellCoord = new Vector2D(0, 0);
+            bool piecePlaced = false;
+
+            while (!piecePlaced)
+            {
+                for (int counter = 0; counter < board.Grid.GetLength(0); counter++)
+                {
+                    int colMatches = CheckHorizontal(ref board, AIPiece, counter);
+                    if (CheckPlayerPlacedRow(ref board, GetOppositePiece(AIPiece), counter) && colMatches > 0)
+                    {
+                        if (colMatches > matches)
+                        {
+                            matches = colMatches;
+                            cellCoord = GetFreeCellCol(ref board, counter);
+                            piecePlaced = true;
+                        }
+                    }
+
+                }
+
+                for (int counter = 0; counter < board.Grid.GetLength(1); counter++)
+                {
+                    int rowMatches = CheckHorizontal(ref board, AIPiece, counter);
+                    if (CheckPlayerPlacedCol(ref board, GetOppositePiece(AIPiece), counter) && rowMatches > 0)
+                    {
+                        if (rowMatches > matches)
+                        {
+                            matches = rowMatches;
+                            cellCoord = GetFreeCellRow(ref board, counter);
+                            piecePlaced = true;
+                        }
+                    }
+                }
+
+                if (!piecePlaced)
+                {
+                    CalculateEasyMove(ref board);
+                }
+            }
+
+            board.Grid[cellCoord.x, cellCoord.y].CellPiece = AIPiece;
+        }
+
+        private void CalculateAdvancedMove(ref Board board)
+        {
+            //
+        }
+
+        private Vector2D GetFreeCellRow(ref Board board, int row)
+        {
+            int selectedCol = 0;
+            for (int col = 0; col < board.Grid.GetLength(1); col++)
+            {
+                if (board.Grid[row, col].CellPiece == Piece.None)
+                {
+                    selectedCol = col;
+                }
+            }
+            return new Vector2D(row, selectedCol);
+        }
+
+        private Vector2D GetFreeCellCol(ref Board board, int col)
+        {
+            int selectedRow = 0;
+            for (int row = 0; row < board.Grid.GetLength(0); row++)
+            {
+                if (board.Grid[row, col].CellPiece == Piece.None)
+                {
+                    selectedRow = row;
+                }
+            }
+            return new Vector2D(selectedRow, col);
+        }
+
+        private bool CheckPlayerPlacedRow (ref Board board, Piece p, int row)
+        {
+            for (int col = 0; col < board.Grid.GetLength(1); col++)
+            {
+                if (board.Grid[row, col].CellPiece == p)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool CheckPlayerPlacedCol(ref Board board, Piece p, int col)
+        {
+            for (int row = 0; row < board.Grid.GetLength(0); row++)
+            {
+                if (board.Grid[row, col].CellPiece == p)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private int CheckHorizontal(ref Board board, Piece p, int row)
