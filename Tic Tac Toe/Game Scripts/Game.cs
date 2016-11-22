@@ -75,7 +75,7 @@ namespace Tic_Tac_Toe
                         return State.Won;
                     }
                 }
-            }         
+            }
             //Check left diagonal
             var diagonalSpaces = (gameBoard.Grid.GetLength(0) < gameBoard.Grid.GetLength(1)) ?
                 gameBoard.Grid.GetLength(0) : gameBoard.Grid.GetLength(1);
@@ -90,28 +90,34 @@ namespace Tic_Tac_Toe
                     return State.Won;
                 }
             }
-            Cell topright = gameBoard.Grid[diagonalSpaces - 1, 0];
-            for (int i = diagonalSpaces - 2; i > 0; i--)
+            Cell topright = gameBoard.Grid[0, diagonalSpaces - 1];
+            int diagonalCol = diagonalSpaces - 1;
+            //Check for right diagonal
+            for (int row = 0; row < diagonalSpaces; row++)
             {
-                if (topright.CellPiece != gameBoard.Grid[i, i].CellPiece)
+                if (topright.CellPiece != gameBoard.Grid[row, diagonalCol].CellPiece)
                     break;
-                else if (i == 1 && topright.CellPiece != Piece.None)
+                else if (diagonalCol == 0 && topright.CellPiece != Piece.None)
                 {
                     winner = topright.CellPiece;
                     return State.Won;
                 }
+                diagonalCol--;
             }
+
             //Check for tie
             bool emptySlots = false;
             for (int row = 0; row < gameBoard.Grid.GetLength(0); row++)
             {
                 for (int col = 0; col < gameBoard.Grid.GetLength(1); col++)
                 {
-                    if (gameBoard.Grid[row,col].CellPiece != Piece.None)
+                    if (gameBoard.Grid[row,col].CellPiece == Piece.None)
                     {
                         emptySlots = true;
+                        break;
                     }
                 }
+                if (emptySlots) break;
             }
 
             if (!emptySlots)

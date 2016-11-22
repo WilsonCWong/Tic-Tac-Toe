@@ -45,23 +45,24 @@ namespace Tic_Tac_Toe
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            if (currentGame.CurrentPlayer == Game.Participant.AI)
+            if (currentGame.CurrentPlayer == Game.Participant.AI && gameState == Game.State.Playing) 
             {
                 currentGame.aiPlayer.CalculateMove(ref currentGame.gameBoard, currentGame.GameDifficulty);
+                Console.WriteLine("Calculating Move...");
                 currentGame.CurrentPlayer = Game.Participant.Player;
                 RepaintGame();
                 gameState = currentGame.CheckVictory(out winnerPiece);
                 if (gameState != Game.State.Playing)
                 {
                     gameTimer.Stop();
-                    MessageBox.Show(gameState.ToString());
+                    MessageBox.Show(gameState.ToString() + " by " + winnerPiece.ToString());
                 }
             }
         }
 
         public void cell_Click(object sender, MouseEventArgs e)
         {
-            if (currentGame.CurrentPlayer == Game.Participant.Player)
+            if (currentGame.CurrentPlayer == Game.Participant.Player && gameState == Game.State.Playing)
             {
                 PictureBox pictureBox = (PictureBox)sender;
                 Vector2D coords = CoordFromPictureBox(pictureBox);
@@ -78,7 +79,7 @@ namespace Tic_Tac_Toe
                 if (gameState != Game.State.Playing)
                 {
                     gameTimer.Stop();
-                    MessageBox.Show(gameState.ToString());
+                    MessageBox.Show(gameState.ToString() + " by " + winnerPiece.ToString());
                 }
             }
         }

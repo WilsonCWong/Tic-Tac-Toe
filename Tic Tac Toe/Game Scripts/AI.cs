@@ -17,9 +17,11 @@ namespace Tic_Tac_Toe
             switch (diff)
             {
                 case Difficulty.Easy:
+                    Console.WriteLine("Easy Calculate...");
                     CalculateEasyMove(ref board);
                     break;
                 case Difficulty.Normal:
+                    Console.WriteLine("Normal Calculate...");
                     CalculateNormalMove(ref board);
                     break;
                 case Difficulty.Advanced:
@@ -78,42 +80,39 @@ namespace Tic_Tac_Toe
 
             while (!piecePlaced)
             {
-                for (int counter = 0; counter < board.Grid.GetLength(0); counter++)
+                for (int row = 0; row < board.Grid.GetLength(0); row++)
                 {
-                    int colMatches = CheckHorizontal(ref board, AIPiece, counter);
-                    if (CheckPlayerPlacedRow(ref board, GetOppositePiece(AIPiece), counter) && colMatches > 0)
+                    int colMatches = CheckHorizontal(ref board, AIPiece, row);
+                    if (!CheckPlayerPlacedRow(ref board, GetOppositePiece(AIPiece), row) && colMatches > matches)
                     {
-                        if (colMatches > matches)
-                        {
                             matches = colMatches;
-                            cellCoord = GetFreeCellCol(ref board, counter);
+                            cellCoord = GetFreeCellRow(ref board, row);
                             piecePlaced = true;
-                        }
                     }
 
                 }
 
-                for (int counter = 0; counter < board.Grid.GetLength(1); counter++)
+                for (int col = 0; col < board.Grid.GetLength(1); col++)
                 {
-                    int rowMatches = CheckHorizontal(ref board, AIPiece, counter);
-                    if (CheckPlayerPlacedCol(ref board, GetOppositePiece(AIPiece), counter) && rowMatches > 0)
+                    int rowMatches = CheckVertical(ref board, AIPiece, col);
+                    if (!CheckPlayerPlacedCol(ref board, GetOppositePiece(AIPiece), col) && rowMatches > matches)
                     {
-                        if (rowMatches > matches)
-                        {
                             matches = rowMatches;
-                            cellCoord = GetFreeCellRow(ref board, counter);
+                            cellCoord = GetFreeCellCol(ref board, col);
                             piecePlaced = true;
-                        }
                     }
                 }
 
                 if (!piecePlaced)
                 {
+                    piecePlaced = true;
                     CalculateEasyMove(ref board);
                 }
+                else
+                {
+                    board.Grid[cellCoord.x, cellCoord.y].CellPiece = AIPiece;
+                }
             }
-
-            board.Grid[cellCoord.x, cellCoord.y].CellPiece = AIPiece;
         }
 
         private void CalculateAdvancedMove(ref Board board)
@@ -129,6 +128,7 @@ namespace Tic_Tac_Toe
                 if (board.Grid[row, col].CellPiece == Piece.None)
                 {
                     selectedCol = col;
+                    return new Vector2D(row, selectedCol);
                 }
             }
             return new Vector2D(row, selectedCol);
@@ -142,6 +142,7 @@ namespace Tic_Tac_Toe
                 if (board.Grid[row, col].CellPiece == Piece.None)
                 {
                     selectedRow = row;
+                    return new Vector2D(selectedRow, col);
                 }
             }
             return new Vector2D(selectedRow, col);
