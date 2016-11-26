@@ -10,27 +10,71 @@ using System.Windows.Forms;
 
 namespace Tic_Tac_Toe
 {
-    public partial class QuickMatchForm : Form
+    public partial class TournamentForm : Form
     {
-        Game currentGame;
+        const int NUMBER_OF_T_MATCHES = 6;
+        const float PERCENT_OF_MATCHES_NORMAL = 0.6f;
 
-        public QuickMatchForm()
+        Game currentGame;
+        int matchIndex;
+        int numberOfMatches;
+        bool tournamentWon;
+
+        Piece playerPiece;
+        Difficulty[] matchDifficulty;
+
+        public TournamentForm()
         {
             InitializeComponent();
             //Set the player image
             playerPictureBox.Image = Player.profilePicture;
 
-            //Prompt the player for the difficulty of the match
-            DifficultyPrompt diffPrompt = new DifficultyPrompt();
-            diffPrompt.ShowDialog();
-
-            //Create a new "game"
-            currentGame = new Game((Difficulty)diffPrompt.selectedDifficulty);
-
-            //Let the player choose the piece they wish to be, and assign it
+            //Let the player choose the piece they wish to be, and assign it, this is for the whole tournament
             PiecePrompt piecePrompt = new PiecePrompt();
             piecePrompt.ShowDialog();
-            currentGame.PlayerPiece = piecePrompt.selectedPiece;
+            playerPiece = piecePrompt.selectedPiece;
+
+            //Tournament Settings
+            numberOfMatches = NUMBER_OF_T_MATCHES;
+            matchIndex = 0;
+            tournamentWon = false;
+            matchDifficulty = new Difficulty[NUMBER_OF_T_MATCHES];
+
+            //Set up the difficulty of each match
+            //1 advanced match, a specified percentage of normal matches, and rest are easy.
+            //Tournament starts easy and gets harder.
+            matchDifficulty[NUMBER_OF_T_MATCHES - 1] = Difficulty.Advanced;
+            int normalMatches = (int)Math.Ceiling(NUMBER_OF_T_MATCHES * PERCENT_OF_MATCHES_NORMAL);
+            int easyMatches = NUMBER_OF_T_MATCHES - (normalMatches + 1);
+
+            for (int i = 0; i < easyMatches; i++)
+            {
+                matchDifficulty[i] = Difficulty.Easy;
+            }
+
+            for (int i = easyMatches; i < normalMatches; i++)
+            {
+                matchDifficulty[i] = Difficulty.Normal;
+            }
+
+            StartGame();
+        }
+
+        private void StartGame()
+        {
+            //Create a new "game"
+            currentGame = new Game(matchDifficulty[matchIndex]);
+
+            //Repaint the grid
+            RepaintGame();
+
+            //Display the proper round
+            roundLabel.Text = (matchIndex + 1 == NUMBER_OF_T_MATCHES) ? "Final Round" : "Round " + (matchIndex + 1);
+
+            Console.WriteLine(matchDifficulty[matchIndex].ToString());
+
+            //Assign the player's piece
+            currentGame.PlayerPiece = playerPiece;
 
             //Create a new AI player, and assign it the piece opposite of the player
             currentGame.aiPlayer = new AI();
@@ -41,7 +85,7 @@ namespace Tic_Tac_Toe
             DiceRollPrompt diceRoll = new DiceRollPrompt();
             diceRoll.ShowDialog();
             currentGame.CurrentPlayer = diceRoll.firstToGo;
-            
+
             //Start the game
             currentGame.GameStarted = true;
             currentGame.GameState = Game.State.Playing;
@@ -51,26 +95,37 @@ namespace Tic_Tac_Toe
             countdownTimer.Start();
         }
 
+        //Check to see if there is a winner for the round.
         private void CheckWinner()
         {
-            Console.WriteLine("Game State: " + currentGame.GameState + ", Winner: " + currentGame.WinnerPiece);
             if (currentGame.GameState != Game.State.Playing)
             {
                 gameTimer.Stop();
                 countdownTimer.Stop();
                 if (currentGame.WinnerPiece == currentGame.PlayerPiece)
                 {
-                    MessageBox.Show("You have won this match.");
+                    if (matchIndex != NUMBER_OF_T_MATCHES - 1)
+                    {
+                        matchIndex++;
+                        MessageBox.Show("You've won this round!");
+                        StartGame();
+                    }
+                    else
+                    {
+                        MessageBox.Show("You've won the tournament!");
+                        this.Close();
+                    }
                 }
                 else if (currentGame.WinnerPiece == Piece.None)
                 {
-                    MessageBox.Show("This match has ended in a draw.");
+                    MessageBox.Show("You have tied with the opponent. You need to rematch until there is a winner.");
+                    StartGame();
                 }
                 else
                 {
-                    MessageBox.Show("You have lost this match.");
+                    MessageBox.Show("You have lost the tournament.");
+                    this.Close();
                 }
-                this.Close();
             }
         }
 
@@ -87,7 +142,7 @@ namespace Tic_Tac_Toe
                 //Repaint the board so the AI's piece shows up.
                 RepaintGame();
                 currentGame.GameState = currentGame.CheckVictory();
-                CheckWinner();
+                CheckWinner();      
             }
             else if (currentGame.CurrentPlayer == Game.Participant.Player && currentGame.PlayerTimer <= 0)
             {

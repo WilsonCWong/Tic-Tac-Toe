@@ -1,6 +1,6 @@
 ﻿namespace Tic_Tac_Toe
 {
-    partial class QuickMatchForm
+    partial class TournamentForm
     {
         /// <summary>
         /// Required designer variable.
@@ -43,6 +43,7 @@
             this.aiPictureBox = new System.Windows.Forms.PictureBox();
             this.playerPictureBox = new System.Windows.Forms.PictureBox();
             this.timerLabel = new System.Windows.Forms.Label();
+            this.roundLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Cell00)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Cell11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Cell20)).BeginInit();
@@ -223,12 +224,25 @@
             this.timerLabel.Text = "Time Left: 20.0";
             this.timerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // QuickMatchForm
+            // roundLabel
+            // 
+            this.roundLabel.BackColor = System.Drawing.Color.Transparent;
+            this.roundLabel.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roundLabel.ForeColor = System.Drawing.Color.White;
+            this.roundLabel.Location = new System.Drawing.Point(12, 626);
+            this.roundLabel.Name = "roundLabel";
+            this.roundLabel.Size = new System.Drawing.Size(158, 94);
+            this.roundLabel.TabIndex = 11;
+            this.roundLabel.Text = "Round 1";
+            this.roundLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TournamentForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::Tic_Tac_Toe.Properties.Resources.blurredbg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.roundLabel);
             this.Controls.Add(this.timerLabel);
             this.Controls.Add(this.aiPictureBox);
             this.Controls.Add(this.playerPictureBox);
@@ -242,9 +256,9 @@
             this.Controls.Add(this.pb_Cell11);
             this.Controls.Add(this.pb_Cell00);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "QuickMatchForm";
+            this.Name = "TournamentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Tic Tac Toe - Quick Match";
+            this.Text = "Tic Tac Toe - Tournament";
             ((System.ComponentModel.ISupportInitialize)(this.pb_Cell00)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Cell11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Cell20)).EndInit();
@@ -277,5 +291,6 @@
         private System.Windows.Forms.PictureBox aiPictureBox;
         private System.Windows.Forms.PictureBox playerPictureBox;
         private System.Windows.Forms.Label timerLabel;
+        private System.Windows.Forms.Label roundLabel;
     }
 }
