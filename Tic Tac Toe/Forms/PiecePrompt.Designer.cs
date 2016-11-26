@@ -87,7 +87,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PiecePrompt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Difficulty";
+            this.Text = "Pick your Piece";
             this.Load += new System.EventHandler(this.PiecePrompt_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -13,6 +13,6 @@ namespace Tic_Tac_Toe
         public static string userName;
         public static Bitmap profilePicture;
         public static int tournamentsWon, tournamentsLost, matchWins, 
-            matchTies, matchLoss, highestScore;
+            matchTies, matchLoss;
     }
 }

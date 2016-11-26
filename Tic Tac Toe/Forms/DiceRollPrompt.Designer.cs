@@ -97,6 +97,7 @@
             // aiPictureBox
             // 
             this.aiPictureBox.BackColor = System.Drawing.SystemColors.Control;
+            this.aiPictureBox.Image = global::Tic_Tac_Toe.Properties.Resources.aipicture;
             this.aiPictureBox.Location = new System.Drawing.Point(572, 122);
             this.aiPictureBox.Name = "aiPictureBox";
             this.aiPictureBox.Size = new System.Drawing.Size(128, 128);

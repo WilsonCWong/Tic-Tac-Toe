@@ -12,13 +12,13 @@ namespace Tic_Tac_Toe
 {
     public partial class TournamentForm : Form
     {
+        const float RESULTS_SCREEN_DELAY = 1.0f;
         const int NUMBER_OF_T_MATCHES = 6;
         const float PERCENT_OF_MATCHES_NORMAL = 0.6f;
 
         Game currentGame;
         int matchIndex;
-        int numberOfMatches;
-        bool tournamentWon;
+        float resultDelay = RESULTS_SCREEN_DELAY;
 
         Piece playerPiece;
         Difficulty[] matchDifficulty;
@@ -26,8 +26,14 @@ namespace Tic_Tac_Toe
         public TournamentForm()
         {
             InitializeComponent();
-            //Set the player image
+            //Initialize button events, etc.
+            surrenderButton.MouseHover += CommonEvents.menuButton_MouseHover;
+            surrenderButton.MouseLeave += CommonEvents.menuButton_MouseLeave;
+            surrenderButton.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+
+            //Set the player's profile
             playerPictureBox.Image = Player.profilePicture;
+            playerNameLabel.Text = Player.userName;
 
             //Let the player choose the piece they wish to be, and assign it, this is for the whole tournament
             PiecePrompt piecePrompt = new PiecePrompt();
@@ -35,9 +41,7 @@ namespace Tic_Tac_Toe
             playerPiece = piecePrompt.selectedPiece;
 
             //Tournament Settings
-            numberOfMatches = NUMBER_OF_T_MATCHES;
             matchIndex = 0;
-            tournamentWon = false;
             matchDifficulty = new Difficulty[NUMBER_OF_T_MATCHES];
 
             //Set up the difficulty of each match
@@ -102,30 +106,7 @@ namespace Tic_Tac_Toe
             {
                 gameTimer.Stop();
                 countdownTimer.Stop();
-                if (currentGame.WinnerPiece == currentGame.PlayerPiece)
-                {
-                    if (matchIndex != NUMBER_OF_T_MATCHES - 1)
-                    {
-                        matchIndex++;
-                        MessageBox.Show("You've won this round!");
-                        StartGame();
-                    }
-                    else
-                    {
-                        MessageBox.Show("You've won the tournament!");
-                        this.Close();
-                    }
-                }
-                else if (currentGame.WinnerPiece == Piece.None)
-                {
-                    MessageBox.Show("You have tied with the opponent. You need to rematch until there is a winner.");
-                    StartGame();
-                }
-                else
-                {
-                    MessageBox.Show("You have lost the tournament.");
-                    this.Close();
-                }
+                resultTimer.Start();        
             }
         }
 
@@ -264,6 +245,83 @@ namespace Tic_Tac_Toe
         private void UpdateTimer()
         {
             timerLabel.Text = String.Format("Time Left: {0:N1}", currentGame.PlayerTimer);
+        }
+
+        private void surrenderButton_Click(object sender, EventArgs e)
+        {
+            surrenderButton.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+            gameTimer.Stop();
+            countdownTimer.Stop();
+            SurrenderPrompt sPrompt = new SurrenderPrompt();
+            sPrompt.ShowDialog();
+            if (sPrompt.selectedChoice == 0)
+            {
+                Player.tournamentsLost += 1;
+                Player.matchLoss += 1;
+                this.Close();
+            }
+            gameTimer.Start();
+            countdownTimer.Start();
+        }
+
+        private void resultTimer_Tick(object sender, EventArgs e)
+        {
+            resultDelay -= 1.0f;
+            if (resultDelay <= 0)
+            {
+                resultTimer.Stop();
+                resultDelay = RESULTS_SCREEN_DELAY;
+                if (currentGame.WinnerPiece == currentGame.PlayerPiece)
+                {
+                    Player.matchWins += 1;
+                    if (matchIndex != NUMBER_OF_T_MATCHES - 1)
+                    {
+                        TournamentMatchPrompt tPrompt = new TournamentMatchPrompt();
+                        tPrompt.ShowDialog();
+                        if (tPrompt.selectedChoice == 0)
+                        {
+                            matchIndex++;
+                            StartGame();
+                        }
+                        else
+                        {
+                            Player.tournamentsLost += 1;
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        Player.tournamentsWon += 1;
+                        GameEndScreen winScreen = new GameEndScreen();
+                        PictureBox winPicBox = (PictureBox)winScreen.Controls["resultPictureBox"];
+                        winPicBox.Image = Properties.Resources.Victory;
+                        winScreen.ShowDialog();
+                        if (winScreen.selectedChoice == 0)
+                            StartGame();
+                        else
+                            this.Close();
+                    }
+                }
+                else if (currentGame.WinnerPiece == Piece.None)
+                {
+                    Player.matchTies += 1;
+                    MessageBox.Show("You have tied with the opponent. You need to rematch until there is a winner.");
+                    StartGame();
+                }
+                else
+                {
+                    Player.matchLoss += 1;
+                    Player.tournamentsLost += 1;
+                    GameEndScreen lostScreen = new GameEndScreen();
+                    PictureBox losePicBox = (PictureBox)lostScreen.Controls["resultPictureBox"];
+                    losePicBox.Image = Properties.Resources.Defeat;
+                    lostScreen.ShowDialog();
+                    if (lostScreen.selectedChoice == 0)
+                        StartGame();
+                    else
+                        this.Close();
+                }
+            }
         }
     }
 }

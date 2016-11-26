@@ -32,14 +32,16 @@
             this.subtitleLabel = new System.Windows.Forms.Label();
             this.quickMatchButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.tLossLabel = new System.Windows.Forms.Label();
+            this.tWonLabel = new System.Windows.Forms.Label();
+            this.wltLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tournamentButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.welcomeLabel = new System.Windows.Forms.Label();
+            this.changeNameLabel = new System.Windows.Forms.Label();
             this.changePictureButton = new System.Windows.Forms.Button();
             this.profilePictureDialog = new System.Windows.Forms.OpenFileDialog();
             this.profilePictureBox = new System.Windows.Forms.PictureBox();
@@ -92,41 +94,70 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.tLossLabel);
+            this.groupBox1.Controls.Add(this.tWonLabel);
+            this.groupBox1.Controls.Add(this.wltLabel);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(12, 421);
+            this.groupBox1.Location = new System.Drawing.Point(12, 445);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(259, 128);
+            this.groupBox1.Size = new System.Drawing.Size(259, 104);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Stats";
             // 
-            // label4
+            // tLossLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 95);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 17);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Highest Score";
+            this.tLossLabel.BackColor = System.Drawing.Color.Transparent;
+            this.tLossLabel.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tLossLabel.ForeColor = System.Drawing.Color.White;
+            this.tLossLabel.Location = new System.Drawing.Point(139, 72);
+            this.tLossLabel.Name = "tLossLabel";
+            this.tLossLabel.Size = new System.Drawing.Size(114, 17);
+            this.tLossLabel.TabIndex = 9;
+            this.tLossLabel.Text = "0";
+            this.tLossLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // tWonLabel
+            // 
+            this.tWonLabel.BackColor = System.Drawing.Color.Transparent;
+            this.tWonLabel.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tWonLabel.ForeColor = System.Drawing.Color.White;
+            this.tWonLabel.Location = new System.Drawing.Point(139, 48);
+            this.tWonLabel.Name = "tWonLabel";
+            this.tWonLabel.Size = new System.Drawing.Size(114, 17);
+            this.tWonLabel.TabIndex = 9;
+            this.tWonLabel.Text = "0";
+            this.tWonLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // wltLabel
+            // 
+            this.wltLabel.BackColor = System.Drawing.Color.Transparent;
+            this.wltLabel.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wltLabel.ForeColor = System.Drawing.Color.White;
+            this.wltLabel.Location = new System.Drawing.Point(139, 24);
+            this.wltLabel.Name = "wltLabel";
+            this.wltLabel.Size = new System.Drawing.Size(114, 17);
+            this.wltLabel.TabIndex = 9;
+            this.wltLabel.Text = "0/0/0";
+            this.wltLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 71);
+            this.label3.Location = new System.Drawing.Point(7, 72);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(119, 17);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Tournaments Loss";
+            this.label3.Text = "Tournaments Lost";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 47);
+            this.label2.Location = new System.Drawing.Point(6, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 17);
             this.label2.TabIndex = 6;
@@ -135,7 +166,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 23);
+            this.label1.Location = new System.Drawing.Point(6, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 17);
             this.label1.TabIndex = 5;
@@ -177,35 +208,38 @@
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // label5
+            // welcomeLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(493, 508);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(144, 17);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Welcome back, User.";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.welcomeLabel.BackColor = System.Drawing.Color.Transparent;
+            this.welcomeLabel.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcomeLabel.ForeColor = System.Drawing.Color.White;
+            this.welcomeLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.welcomeLabel.Location = new System.Drawing.Point(375, 508);
+            this.welcomeLabel.Name = "welcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(262, 17);
+            this.welcomeLabel.TabIndex = 9;
+            this.welcomeLabel.Text = "Welcome back, User.";
+            this.welcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label6
+            // changeNameLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label6.Location = new System.Drawing.Point(570, 530);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 17);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Not you?";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.changeNameLabel.AutoSize = true;
+            this.changeNameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.changeNameLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.changeNameLabel.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changeNameLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.changeNameLabel.Location = new System.Drawing.Point(570, 530);
+            this.changeNameLabel.Name = "changeNameLabel";
+            this.changeNameLabel.Size = new System.Drawing.Size(67, 17);
+            this.changeNameLabel.TabIndex = 9;
+            this.changeNameLabel.Text = "Not you?";
+            this.changeNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.changeNameLabel.Click += new System.EventHandler(this.changeNameLabel_Click);
             // 
             // changePictureButton
             // 
             this.changePictureButton.BackColor = System.Drawing.Color.Transparent;
+            this.changePictureButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.changePictureButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.changePictureButton.FlatAppearance.BorderSize = 0;
             this.changePictureButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -242,8 +276,9 @@
             this.BackgroundImage = global::Tic_Tac_Toe.Properties.Resources.blurredbg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.ControlBox = false;
+            this.Controls.Add(this.changeNameLabel);
+            this.Controls.Add(this.welcomeLabel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.profilePictureBox);
             this.Controls.Add(this.exitButton);
@@ -273,14 +308,16 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button tournamentButton;
         private System.Windows.Forms.Button exitButton;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label welcomeLabel;
+        private System.Windows.Forms.Label changeNameLabel;
         private System.Windows.Forms.Button changePictureButton;
         private System.Windows.Forms.OpenFileDialog profilePictureDialog;
+        private System.Windows.Forms.Label tLossLabel;
+        private System.Windows.Forms.Label tWonLabel;
+        private System.Windows.Forms.Label wltLabel;
     }
 }
 

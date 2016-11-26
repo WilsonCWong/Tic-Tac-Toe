@@ -44,6 +44,10 @@
             this.playerPictureBox = new System.Windows.Forms.PictureBox();
             this.timerLabel = new System.Windows.Forms.Label();
             this.roundLabel = new System.Windows.Forms.Label();
+            this.surrenderButton = new System.Windows.Forms.Button();
+            this.resultTimer = new System.Windows.Forms.Timer(this.components);
+            this.aiNameLabel = new System.Windows.Forms.Label();
+            this.playerNameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Cell00)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Cell11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Cell20)).BeginInit();
@@ -195,6 +199,7 @@
             // aiPictureBox
             // 
             this.aiPictureBox.BackColor = System.Drawing.SystemColors.Control;
+            this.aiPictureBox.Image = global::Tic_Tac_Toe.Properties.Resources.aipicture;
             this.aiPictureBox.Location = new System.Drawing.Point(868, 12);
             this.aiPictureBox.Name = "aiPictureBox";
             this.aiPictureBox.Size = new System.Drawing.Size(128, 128);
@@ -236,12 +241,67 @@
             this.roundLabel.Text = "Round 1";
             this.roundLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // surrenderButton
+            // 
+            this.surrenderButton.BackColor = System.Drawing.Color.Transparent;
+            this.surrenderButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.surrenderButton.FlatAppearance.BorderSize = 0;
+            this.surrenderButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.surrenderButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.surrenderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.surrenderButton.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.surrenderButton.ForeColor = System.Drawing.Color.Black;
+            this.surrenderButton.Location = new System.Drawing.Point(341, 611);
+            this.surrenderButton.Name = "surrenderButton";
+            this.surrenderButton.Size = new System.Drawing.Size(327, 63);
+            this.surrenderButton.TabIndex = 13;
+            this.surrenderButton.Text = "SURRENDER";
+            this.surrenderButton.UseVisualStyleBackColor = true;
+            this.surrenderButton.Click += new System.EventHandler(this.surrenderButton_Click);
+            // 
+            // resultTimer
+            // 
+            this.resultTimer.Interval = 1000;
+            this.resultTimer.Tick += new System.EventHandler(this.resultTimer_Tick);
+            // 
+            // aiNameLabel
+            // 
+            this.aiNameLabel.AutoSize = true;
+            this.aiNameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.aiNameLabel.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aiNameLabel.ForeColor = System.Drawing.Color.White;
+            this.aiNameLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.aiNameLabel.Location = new System.Drawing.Point(832, 12);
+            this.aiNameLabel.Name = "aiNameLabel";
+            this.aiNameLabel.Size = new System.Drawing.Size(30, 22);
+            this.aiNameLabel.TabIndex = 14;
+            this.aiNameLabel.Text = "AI";
+            this.aiNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // playerNameLabel
+            // 
+            this.playerNameLabel.AutoSize = true;
+            this.playerNameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.playerNameLabel.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerNameLabel.ForeColor = System.Drawing.Color.White;
+            this.playerNameLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.playerNameLabel.Location = new System.Drawing.Point(146, 12);
+            this.playerNameLabel.Name = "playerNameLabel";
+            this.playerNameLabel.Size = new System.Drawing.Size(66, 22);
+            this.playerNameLabel.TabIndex = 14;
+            this.playerNameLabel.Text = "Player";
+            this.playerNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // TournamentForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::Tic_Tac_Toe.Properties.Resources.blurredbg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ControlBox = false;
+            this.Controls.Add(this.playerNameLabel);
+            this.Controls.Add(this.aiNameLabel);
+            this.Controls.Add(this.surrenderButton);
             this.Controls.Add(this.roundLabel);
             this.Controls.Add(this.timerLabel);
             this.Controls.Add(this.aiPictureBox);
@@ -292,5 +352,9 @@
         private System.Windows.Forms.PictureBox playerPictureBox;
         private System.Windows.Forms.Label timerLabel;
         private System.Windows.Forms.Label roundLabel;
+        private System.Windows.Forms.Button surrenderButton;
+        private System.Windows.Forms.Timer resultTimer;
+        private System.Windows.Forms.Label aiNameLabel;
+        private System.Windows.Forms.Label playerNameLabel;
     }
 }

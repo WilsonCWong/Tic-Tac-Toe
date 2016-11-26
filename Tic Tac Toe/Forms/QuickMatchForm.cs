@@ -12,14 +12,28 @@ namespace Tic_Tac_Toe
 {
     public partial class QuickMatchForm : Form
     {
+        const float END_SCREEN_DELAY = 1.0f;
         Game currentGame;
+        float endScreenDelay = END_SCREEN_DELAY;
 
         public QuickMatchForm()
         {
             InitializeComponent();
-            //Set the player image
-            playerPictureBox.Image = Player.profilePicture;
+            //Initialize button events, etc.
+            surrenderButton.MouseHover += CommonEvents.menuButton_MouseHover;
+            surrenderButton.MouseLeave += CommonEvents.menuButton_MouseLeave;
+            surrenderButton.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
 
+            //Set the player's profile
+            playerPictureBox.Image = Player.profilePicture;
+            playerNameLabel.Text = Player.userName;
+
+            StartGame();
+         
+        }
+
+        private void StartGame()
+        {
             //Prompt the player for the difficulty of the match
             DifficultyPrompt diffPrompt = new DifficultyPrompt();
             diffPrompt.ShowDialog();
@@ -41,7 +55,7 @@ namespace Tic_Tac_Toe
             DiceRollPrompt diceRoll = new DiceRollPrompt();
             diceRoll.ShowDialog();
             currentGame.CurrentPlayer = diceRoll.firstToGo;
-            
+
             //Start the game
             currentGame.GameStarted = true;
             currentGame.GameState = Game.State.Playing;
@@ -53,24 +67,11 @@ namespace Tic_Tac_Toe
 
         private void CheckWinner()
         {
-            Console.WriteLine("Game State: " + currentGame.GameState + ", Winner: " + currentGame.WinnerPiece);
             if (currentGame.GameState != Game.State.Playing)
             {
                 gameTimer.Stop();
                 countdownTimer.Stop();
-                if (currentGame.WinnerPiece == currentGame.PlayerPiece)
-                {
-                    MessageBox.Show("You have won this match.");
-                }
-                else if (currentGame.WinnerPiece == Piece.None)
-                {
-                    MessageBox.Show("This match has ended in a draw.");
-                }
-                else
-                {
-                    MessageBox.Show("You have lost this match.");
-                }
-                this.Close();
+                endScreenTimer.Start();
             }
         }
 
@@ -209,6 +210,72 @@ namespace Tic_Tac_Toe
         private void UpdateTimer()
         {
             timerLabel.Text = String.Format("Time Left: {0:N1}", currentGame.PlayerTimer);
+        }
+
+        private void surrenderButton_Click(object sender, EventArgs e)
+        {           
+            gameTimer.Stop();
+            countdownTimer.Stop();
+            SurrenderPrompt sPrompt = new SurrenderPrompt();
+            sPrompt.ShowDialog();
+            if (sPrompt.selectedChoice == 0)
+            {
+                Player.matchLoss += 1;
+                this.Close();
+            }
+            gameTimer.Start();
+            countdownTimer.Start();
+        }
+
+        private void endScreenTimer_Tick(object sender, EventArgs e)
+        {
+            endScreenDelay -= 1.0f;
+            if (endScreenDelay <= 0)
+            {
+                endScreenTimer.Stop();
+                endScreenDelay = END_SCREEN_DELAY;
+                GameEndScreen gameEndScreen = new GameEndScreen();
+                PictureBox resultPictureBox = (PictureBox)gameEndScreen.Controls["resultPictureBox"];
+                bool quitting = false;
+                if (currentGame.WinnerPiece == currentGame.PlayerPiece)
+                {
+                    Player.matchWins += 1;
+                    resultPictureBox.Image = Properties.Resources.Victory;
+                    gameEndScreen.ShowDialog();
+                    if (gameEndScreen.selectedChoice == 0)
+                        quitting = false;
+                    else
+                        quitting = true;
+                }
+                else if (currentGame.WinnerPiece == Piece.None)
+                {
+                    Player.matchTies += 1;
+                    resultPictureBox.Image = Properties.Resources.Tie;
+                    gameEndScreen.ShowDialog();
+                    if (gameEndScreen.selectedChoice == 0)
+                        quitting = false;
+                    else
+                        quitting = true;
+                }
+                else
+                {
+                    Player.matchLoss += 1;
+                    resultPictureBox.Image = Properties.Resources.Defeat;
+                    gameEndScreen.ShowDialog();
+                    if (gameEndScreen.selectedChoice == 0)
+                        quitting = false;
+                    else
+                        quitting = true;
+                }
+
+                if (quitting)
+                    this.Close();
+                else
+                {
+                    StartGame();
+                    RepaintGame();
+                }               
+            }     
         }
     }
 }
