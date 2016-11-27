@@ -199,9 +199,6 @@
     <None Include="Resources\usericon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\blurredbg.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\blurredbg1.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -266,6 +263,57 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\championai.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\purpleGridLoop.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BibleThumpFace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AreYouAWizardFace.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\benKwanFace.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Derp face.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kappaEmote.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filthyFrankPapa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filthyFrankPilot.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filthyFrankPinkGuy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\happy-rage-guy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tyler1HurrFace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tonyGaddisFace.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trumpApproval.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tyler1DisgustFace.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tyler1HeheXd.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\retroGroveLoop.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blurredbg.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

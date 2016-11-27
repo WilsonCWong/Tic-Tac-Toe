@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.titleLabel = new System.Windows.Forms.Label();
             this.subtitleLabel = new System.Windows.Forms.Label();
             this.quickMatchButton = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.statsGroupBox = new System.Windows.Forms.GroupBox();
             this.tLossLabel = new System.Windows.Forms.Label();
             this.tWonLabel = new System.Windows.Forms.Label();
             this.wltLabel = new System.Windows.Forms.Label();
@@ -45,8 +46,10 @@
             this.changePictureButton = new System.Windows.Forms.Button();
             this.profilePictureDialog = new System.Windows.Forms.OpenFileDialog();
             this.profilePictureBox = new System.Windows.Forms.PictureBox();
-            this.groupBox1.SuspendLayout();
+            this.animatedBackgroundPictureBox = new System.Windows.Forms.PictureBox();
+            this.statsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.animatedBackgroundPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -54,7 +57,7 @@
             this.titleLabel.AutoSize = true;
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Font = new System.Drawing.Font("Copperplate Gothic Bold", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.ForeColor = System.Drawing.Color.White;
+            this.titleLabel.ForeColor = System.Drawing.Color.Black;
             this.titleLabel.Location = new System.Drawing.Point(232, 60);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(321, 53);
@@ -66,7 +69,7 @@
             this.subtitleLabel.AutoSize = true;
             this.subtitleLabel.BackColor = System.Drawing.Color.Transparent;
             this.subtitleLabel.Font = new System.Drawing.Font("Copperplate Gothic Bold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subtitleLabel.ForeColor = System.Drawing.Color.White;
+            this.subtitleLabel.ForeColor = System.Drawing.Color.Black;
             this.subtitleLabel.Location = new System.Drawing.Point(269, 113);
             this.subtitleLabel.Name = "subtitleLabel";
             this.subtitleLabel.Size = new System.Drawing.Size(247, 30);
@@ -91,23 +94,23 @@
             this.quickMatchButton.UseVisualStyleBackColor = true;
             this.quickMatchButton.Click += new System.EventHandler(this.quickMatchButton_Click);
             // 
-            // groupBox1
+            // statsGroupBox
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.tLossLabel);
-            this.groupBox1.Controls.Add(this.tWonLabel);
-            this.groupBox1.Controls.Add(this.wltLabel);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(12, 445);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(259, 104);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Stats";
+            this.statsGroupBox.BackColor = System.Drawing.Color.Transparent;
+            this.statsGroupBox.Controls.Add(this.tLossLabel);
+            this.statsGroupBox.Controls.Add(this.tWonLabel);
+            this.statsGroupBox.Controls.Add(this.wltLabel);
+            this.statsGroupBox.Controls.Add(this.label3);
+            this.statsGroupBox.Controls.Add(this.label2);
+            this.statsGroupBox.Controls.Add(this.label1);
+            this.statsGroupBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statsGroupBox.ForeColor = System.Drawing.Color.White;
+            this.statsGroupBox.Location = new System.Drawing.Point(12, 445);
+            this.statsGroupBox.Name = "statsGroupBox";
+            this.statsGroupBox.Size = new System.Drawing.Size(259, 104);
+            this.statsGroupBox.TabIndex = 4;
+            this.statsGroupBox.TabStop = false;
+            this.statsGroupBox.Text = "Stats";
             // 
             // tLossLabel
             // 
@@ -270,16 +273,27 @@
             this.profilePictureBox.TabIndex = 3;
             this.profilePictureBox.TabStop = false;
             // 
+            // animatedBackgroundPictureBox
+            // 
+            this.animatedBackgroundPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.animatedBackgroundPictureBox.Image = global::Tic_Tac_Toe.Properties.Resources.purpleGridLoop;
+            this.animatedBackgroundPictureBox.Location = new System.Drawing.Point(0, 0);
+            this.animatedBackgroundPictureBox.Name = "animatedBackgroundPictureBox";
+            this.animatedBackgroundPictureBox.Size = new System.Drawing.Size(787, 564);
+            this.animatedBackgroundPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.animatedBackgroundPictureBox.TabIndex = 10;
+            this.animatedBackgroundPictureBox.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackgroundImage = global::Tic_Tac_Toe.Properties.Resources.blurredbg;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.ControlBox = false;
             this.Controls.Add(this.changeNameLabel);
             this.Controls.Add(this.welcomeLabel);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.statsGroupBox);
             this.Controls.Add(this.profilePictureBox);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.tournamentButton);
@@ -287,13 +301,15 @@
             this.Controls.Add(this.quickMatchButton);
             this.Controls.Add(this.subtitleLabel);
             this.Controls.Add(this.titleLabel);
+            this.Controls.Add(this.animatedBackgroundPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tic Tac Toe";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.statsGroupBox.ResumeLayout(false);
+            this.statsGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.animatedBackgroundPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,7 +321,7 @@
         private System.Windows.Forms.Label subtitleLabel;
         private System.Windows.Forms.Button quickMatchButton;
         private System.Windows.Forms.PictureBox profilePictureBox;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox statsGroupBox;
         private System.Windows.Forms.Button tournamentButton;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Label label3;
@@ -318,6 +334,7 @@
         private System.Windows.Forms.Label tLossLabel;
         private System.Windows.Forms.Label tWonLabel;
         private System.Windows.Forms.Label wltLabel;
+        private System.Windows.Forms.PictureBox animatedBackgroundPictureBox;
     }
 }
 

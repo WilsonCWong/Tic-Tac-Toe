@@ -124,17 +124,23 @@
   <data name="x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="VictoryAnnouncer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Victory.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="usericon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\usericon2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="blurredbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\blurredbg2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Preparation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Preparation.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DefeatMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DefeatMusic.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="die_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\die_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Defeat" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Defeat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="die_question" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\die_question.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="die_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\die_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,11 +148,20 @@
   <data name="die_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\die_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="VictoryMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VictoryMusic.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ChampionMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ChampionMusic.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="o" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\o.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Tie" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BattleMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BattleMusic.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="die_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\die_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,8 +169,8 @@
   <data name="die_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\die_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="die_question" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\die_question.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Defeat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Defeat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cell" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cell.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,31 +178,58 @@
   <data name="Victory" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Victory.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="aipicture" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\aipicture.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BattleMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BattleMusic.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="championai" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\championai.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ChampionMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ChampionMusic.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="DefeatAnnouncer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Defeat.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="DefeatMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DefeatMusic.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="purpleGridLoop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\purpleGridLoop.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Preparation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Preparation.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="aipicture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tonyGaddisFace.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="VictoryAnnouncer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Victory.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="AreYouAWizardFace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AreYouAWizardFace.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="VictoryMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\VictoryMusic.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="BibleThumpFace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BibleThumpFace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="blurredbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\blurredbg.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="championai" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\benKwanFace.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Derp_face" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Derp face.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="filthyFrankPapa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\filthyFrankPapa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="filthyFrankPilot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\filthyFrankPilot.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="filthyFrankPinkGuy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\filthyFrankPinkGuy.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="happy_rage_guy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\happy-rage-guy.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kappaEmote" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kappaEmote.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="retroGroveLoop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\retroGroveLoop.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="trumpApproval" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trumpApproval.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tyler1DisgustFace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tyler1DisgustFace.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tyler1HeheXd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tyler1HeheXd.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tyler1HurrFace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tyler1HurrFace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

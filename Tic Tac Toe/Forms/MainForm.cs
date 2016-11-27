@@ -16,11 +16,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Media;
 
 namespace Tic_Tac_Toe
 {
     public partial class MainForm : Form
     {
+        //Initialized variable
+        SoundPlayer soundPlayer = new SoundPlayer();
+
         public MainForm()
         {
             InitializeComponent();
@@ -30,6 +34,10 @@ namespace Tic_Tac_Toe
             LoadStats();
             //Welcome the user by their name, if any. Default is User.
             welcomeLabel.Text = "Welcome back, " + Player.userName;
+
+            //Play and loop the background music
+            soundPlayer.Stream = Properties.Resources.retroGroveLoop;
+            soundPlayer.PlayLooping();
 
             //Setup event handlers
             this.quickMatchButton.MouseHover += new System.EventHandler(CommonEvents.menuButton_MouseHover);
@@ -47,6 +55,17 @@ namespace Tic_Tac_Toe
             tournamentButton.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
             exitButton.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
 
+            //Make the text backgrounds of the labels the same as the background gif
+            titleLabel.Parent = animatedBackgroundPictureBox;
+            subtitleLabel.Parent = animatedBackgroundPictureBox;
+            quickMatchButton.Parent = animatedBackgroundPictureBox;
+            tournamentButton.Parent = animatedBackgroundPictureBox;
+            exitButton.Parent = animatedBackgroundPictureBox;
+            statsGroupBox.Parent = animatedBackgroundPictureBox;
+            welcomeLabel.Parent = animatedBackgroundPictureBox;
+            changeNameLabel.Parent = animatedBackgroundPictureBox;
+            changePictureButton.Parent = animatedBackgroundPictureBox;
+
         }
 
         //Starts the quick match form
@@ -56,6 +75,11 @@ namespace Tic_Tac_Toe
             qmForm.ShowDialog();
             //Updates the stats after the play session.
             UpdateStatLabels();
+
+            soundPlayer.Stop();
+            //Play and loop the background music
+            soundPlayer.Stream = Properties.Resources.retroGroveLoop;
+            soundPlayer.PlayLooping();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -90,6 +114,11 @@ namespace Tic_Tac_Toe
             tournamentForm.ShowDialog();
             //Update stats after tournament.
             UpdateStatLabels();
+
+            soundPlayer.Stop();
+            //Play and loop the background music
+            soundPlayer.Stream = Properties.Resources.retroGroveLoop;
+            soundPlayer.PlayLooping();
         }
 
         //Updates the stat labels on the main form.
@@ -151,7 +180,7 @@ namespace Tic_Tac_Toe
                 //Clear the settings as the image no longer exists there
                 Properties.Settings.Default["ProfileImage"] = "";
                 //Default image
-                Player.profilePicture = Properties.Resources.usericon;
+                Player.profilePicture = Properties.Resources.filthyFrankPinkGuy;
                 profilePictureBox.Image = Player.profilePicture;
             }
         }
