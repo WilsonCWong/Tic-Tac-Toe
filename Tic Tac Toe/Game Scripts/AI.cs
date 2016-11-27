@@ -34,26 +34,6 @@ namespace Tic_Tac_Toe
             return false;
         }
 
-        //Returns the opposite piece of the one supplied by the parameter. 
-        private Piece GetOppositePiece(Piece p)
-        {
-            Piece otherPiece;
-            switch (p)
-            {
-                case Piece.X:
-                    otherPiece = Piece.O;
-                    break;
-                case Piece.O:
-                    otherPiece = Piece.X;
-                    break;
-                default:
-                    MessageBox.Show("Error determining player's piece.");
-                    otherPiece = p;
-                    break;
-            }
-            return otherPiece;
-        }
-
         /*
             The weakest AI possible, randomly places a piece in the grid.
         */
@@ -102,7 +82,7 @@ namespace Tic_Tac_Toe
                 for (int row = 0; row < board.Grid.GetLength(0); row++)
                 {
                     int colMatches = CheckHorizontal(ref board, AIPiece, row);
-                    int playerColMatches = CheckHorizontal(ref board, GetOppositePiece(AIPiece), row);
+                    int playerColMatches = CheckHorizontal(ref board, Game.GetOppositePiece(AIPiece), row);
                     //If the row has not been blocked by the player, and the matches in this row is greater
                     //than any matches found previously, then we use this row. This is the same throughout the
                     //other checks.                   
@@ -121,7 +101,7 @@ namespace Tic_Tac_Toe
                 for (int col = 0; col < board.Grid.GetLength(1); col++)
                 {
                     int rowMatches = CheckVertical(ref board, AIPiece, col);
-                    int playerRowMatches = CheckVertical(ref board, GetOppositePiece(AIPiece), col);
+                    int playerRowMatches = CheckVertical(ref board, Game.GetOppositePiece(AIPiece), col);
                     if (playerRowMatches == 0 && rowMatches > matches)
                     {
                         matches = rowMatches;
@@ -136,7 +116,7 @@ namespace Tic_Tac_Toe
 
                 //Check the left diagonal for matches
                 int leftDiagMatches = CheckLeftDiagonal(ref board, AIPiece);
-                if (CheckLeftDiagonal(ref board, GetOppositePiece(AIPiece)) == 0 && leftDiagMatches > matches)
+                if (CheckLeftDiagonal(ref board, Game.GetOppositePiece(AIPiece)) == 0 && leftDiagMatches > matches)
                 {
                     matches = leftDiagMatches;
                     cellCoord = GetFreeCellLeftDiag(ref board, diagonalSpaces);
@@ -145,7 +125,7 @@ namespace Tic_Tac_Toe
 
                 //Check the right diagonal for matches
                 int rightDiagMatches = CheckRightDiagonal(ref board, AIPiece);
-                if (CheckRightDiagonal(ref board, GetOppositePiece(AIPiece)) == 0 && rightDiagMatches > matches)
+                if (CheckRightDiagonal(ref board, Game.GetOppositePiece(AIPiece)) == 0 && rightDiagMatches > matches)
                 {
                     matches = rightDiagMatches;
                     cellCoord = GetFreeCellRightDiag(ref board, diagonalSpaces);
@@ -190,7 +170,7 @@ namespace Tic_Tac_Toe
                 for (int row = 0; row < rowLength; row++)
                 {
                     int colMatches = CheckHorizontal(ref board, AIPiece, row);
-                    int playerColMatches = CheckHorizontal(ref board, GetOppositePiece(AIPiece), row);
+                    int playerColMatches = CheckHorizontal(ref board, Game.GetOppositePiece(AIPiece), row);
                     //Checks whether the AI will win first, then whether or not the player will win in the next move
                     //Notice that this checks whether or not the AI is one move away from winning, and whether the last slot of the row is free
                     if (colMatches == rowLength - 1 && playerColMatches == 0)
@@ -213,7 +193,7 @@ namespace Tic_Tac_Toe
                 for (int col = 0; col < colLength; col++)
                 {
                     int rowMatches = CheckVertical(ref board, AIPiece, col);
-                    int playerRowMatches = CheckVertical (ref board, GetOppositePiece(AIPiece), col);
+                    int playerRowMatches = CheckVertical (ref board, Game.GetOppositePiece(AIPiece), col);
                     //Checks whether the AI will win first, then whether or not the player will win in the next move
                     if (rowMatches == colLength - 1 && playerRowMatches == 0)
                     {
@@ -235,7 +215,7 @@ namespace Tic_Tac_Toe
 
                 //Check the left diagonal for self win, then player.
                 int lDiagMatches = CheckLeftDiagonal(ref board, AIPiece);
-                int playerLDiagMatches = CheckLeftDiagonal(ref board, GetOppositePiece(AIPiece));
+                int playerLDiagMatches = CheckLeftDiagonal(ref board, Game.GetOppositePiece(AIPiece));
                 if (lDiagMatches == diagonalSpaces - 1 && playerLDiagMatches == 0)
                 {
                     cellCoord = GetFreeCellLeftDiag(ref board, diagonalSpaces);
@@ -251,7 +231,7 @@ namespace Tic_Tac_Toe
 
                 //Check the right diagonal for self win, then player.
                 int rDiagMatches = CheckRightDiagonal(ref board, AIPiece);
-                int playerRDiagMatches = CheckRightDiagonal(ref board, GetOppositePiece(AIPiece));
+                int playerRDiagMatches = CheckRightDiagonal(ref board, Game.GetOppositePiece(AIPiece));
                 if (rDiagMatches == diagonalSpaces -1 && playerRDiagMatches == 0)
                 {
                     cellCoord = GetFreeCellRightDiag(ref board, diagonalSpaces);

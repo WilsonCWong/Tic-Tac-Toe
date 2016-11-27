@@ -79,7 +79,7 @@ namespace Tic_Tac_Toe
         }
 
         //Get the opposite piece given a piece as a parameter
-        private Piece GetOppositePiece(Piece p)
+        public static Piece GetOppositePiece(Piece p)
         {
             Piece otherPiece;
             switch (p)
