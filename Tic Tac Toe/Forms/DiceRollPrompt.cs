@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+    Project: Tic Tac Toe
+    File: DiceRollPrompt.cs
+    Names: Wilson Wong, Jun Yu Huang, Joseph Yap
+    Date Written: 11/27/2016
+    Section: S11
+    Purpose: Determine whether the AI or User is going first.
+*/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

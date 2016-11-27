@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+    Project: Tic Tac Toe
+    File: AI.cs
+    Names: Wilson Wong, Jun Yu Huang, Joseph Yap
+    Date Written: 11/27/2016
+    Section: S11
+    Purpose: This class is responsible for managing the AI's behaviour.
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

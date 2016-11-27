@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+    Project: Tic Tac Toe
+    File: Game.cs
+    Names: Wilson Wong, Jun Yu Huang, Joseph Yap
+    Date Written: 11/27/2016
+    Section: S11
+    Purpose: These classes and structs are responsible for managing the game. The Game class
+    contains everything the game needs to function.
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

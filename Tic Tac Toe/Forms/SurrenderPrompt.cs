@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+    Project: Tic Tac Toe
+    File: SurrenderPrompt.cs
+    Names: Wilson Wong, Jun Yu Huang, Joseph Yap
+    Date Written: 11/27/2016
+    Section: S11
+    Purpose: Prompt the user for surrender.
+*/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

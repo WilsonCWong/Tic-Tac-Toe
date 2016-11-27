@@ -36,9 +36,9 @@
             this.tLossLabel = new System.Windows.Forms.Label();
             this.tWonLabel = new System.Windows.Forms.Label();
             this.wltLabel = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tournamentLostLabel = new System.Windows.Forms.Label();
+            this.tournamentWonLabel = new System.Windows.Forms.Label();
+            this.winLossLabel = new System.Windows.Forms.Label();
             this.tournamentButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
             this.welcomeLabel = new System.Windows.Forms.Label();
@@ -96,13 +96,13 @@
             // 
             // statsGroupBox
             // 
-            this.statsGroupBox.BackColor = System.Drawing.Color.Transparent;
+            this.statsGroupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(34)))), ((int)(((byte)(132)))));
             this.statsGroupBox.Controls.Add(this.tLossLabel);
             this.statsGroupBox.Controls.Add(this.tWonLabel);
             this.statsGroupBox.Controls.Add(this.wltLabel);
-            this.statsGroupBox.Controls.Add(this.label3);
-            this.statsGroupBox.Controls.Add(this.label2);
-            this.statsGroupBox.Controls.Add(this.label1);
+            this.statsGroupBox.Controls.Add(this.tournamentLostLabel);
+            this.statsGroupBox.Controls.Add(this.tournamentWonLabel);
+            this.statsGroupBox.Controls.Add(this.winLossLabel);
             this.statsGroupBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statsGroupBox.ForeColor = System.Drawing.Color.White;
             this.statsGroupBox.Location = new System.Drawing.Point(12, 445);
@@ -148,32 +148,32 @@
             this.wltLabel.Text = "0/0/0";
             this.wltLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label3
+            // tournamentLostLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 72);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 17);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Tournaments Lost";
+            this.tournamentLostLabel.AutoSize = true;
+            this.tournamentLostLabel.Location = new System.Drawing.Point(7, 72);
+            this.tournamentLostLabel.Name = "tournamentLostLabel";
+            this.tournamentLostLabel.Size = new System.Drawing.Size(119, 17);
+            this.tournamentLostLabel.TabIndex = 7;
+            this.tournamentLostLabel.Text = "Tournaments Lost";
             // 
-            // label2
+            // tournamentWonLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 17);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Tournaments Won";
+            this.tournamentWonLabel.AutoSize = true;
+            this.tournamentWonLabel.Location = new System.Drawing.Point(6, 48);
+            this.tournamentWonLabel.Name = "tournamentWonLabel";
+            this.tournamentWonLabel.Size = new System.Drawing.Size(124, 17);
+            this.tournamentWonLabel.TabIndex = 6;
+            this.tournamentWonLabel.Text = "Tournaments Won";
             // 
-            // label1
+            // winLossLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 17);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Win / Loss / Tie";
+            this.winLossLabel.AutoSize = true;
+            this.winLossLabel.Location = new System.Drawing.Point(6, 24);
+            this.winLossLabel.Name = "winLossLabel";
+            this.winLossLabel.Size = new System.Drawing.Size(101, 17);
+            this.winLossLabel.TabIndex = 5;
+            this.winLossLabel.Text = "Win / Loss / Tie";
             // 
             // tournamentButton
             // 
@@ -215,7 +215,7 @@
             // 
             this.welcomeLabel.BackColor = System.Drawing.Color.Transparent;
             this.welcomeLabel.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomeLabel.ForeColor = System.Drawing.Color.White;
+            this.welcomeLabel.ForeColor = System.Drawing.Color.DarkGray;
             this.welcomeLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.welcomeLabel.Location = new System.Drawing.Point(375, 508);
             this.welcomeLabel.Name = "welcomeLabel";
@@ -291,9 +291,9 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.ControlBox = false;
+            this.Controls.Add(this.statsGroupBox);
             this.Controls.Add(this.changeNameLabel);
             this.Controls.Add(this.welcomeLabel);
-            this.Controls.Add(this.statsGroupBox);
             this.Controls.Add(this.profilePictureBox);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.tournamentButton);
@@ -324,9 +324,9 @@
         private System.Windows.Forms.GroupBox statsGroupBox;
         private System.Windows.Forms.Button tournamentButton;
         private System.Windows.Forms.Button exitButton;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label tournamentLostLabel;
+        private System.Windows.Forms.Label tournamentWonLabel;
+        private System.Windows.Forms.Label winLossLabel;
         private System.Windows.Forms.Label welcomeLabel;
         private System.Windows.Forms.Label changeNameLabel;
         private System.Windows.Forms.Button changePictureButton;

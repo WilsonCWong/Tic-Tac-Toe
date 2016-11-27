@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+    Project: Tic Tac Toe
+    File: TournamentForm.cs
+    Names: Wilson Wong, Jun Yu Huang, Joseph Yap
+    Date Written: 11/27/2016
+    Section: S11
+    Purpose: This form manages the tournament mode of the game.
+*/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -372,7 +380,7 @@ namespace Tic_Tac_Toe
                     MessageBox.Show("You have tied with the opponent. You need to rematch until there is a winner.");
                     StartGame();
                 }
-                else
+                else if (currentGame.WinnerPiece == currentGame.AIPiece)
                 {
                     //Lost tournament
                     soundPlayer.Stop();

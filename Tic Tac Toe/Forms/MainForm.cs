@@ -28,6 +28,7 @@ namespace Tic_Tac_Toe
         public MainForm()
         {
             InitializeComponent();
+ 
             //Load the player's portrait, if any. Defaults to usericon.png
             LoadPlayerPortrait();
             //Load stats from previous play session, if any.

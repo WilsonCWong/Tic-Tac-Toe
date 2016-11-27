@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+    Project: Tic Tac Toe
+    File: QuickMatchForm.cs
+    Names: Wilson Wong, Jun Yu Huang, Joseph Yap
+    Date Written: 11/27/2016
+    Section: S11
+    Purpose: This form manages the Quick Match mode of the game.
+*/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -287,7 +295,7 @@ namespace Tic_Tac_Toe
                     else
                         quitting = true;
                 }
-                else
+                else if (currentGame.WinnerPiece == currentGame.AIPiece)
                 {
                     //Lose screen
                     Player.matchLoss += 1;
