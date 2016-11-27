@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+    Project: Tic Tac Toe
+    File: MainForm.cs
+    Names: Wilson Wong, Jun Yu Huang, Joseph Yap
+    Date Written: 11/27/2016
+    Section: S11
+    Purpose: To provide an interactive Tic-Tac-Toe game with lots of interactive elements.
+*/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,10 +24,14 @@ namespace Tic_Tac_Toe
         public MainForm()
         {
             InitializeComponent();
+            //Load the player's portrait, if any. Defaults to usericon.png
             LoadPlayerPortrait();
+            //Load stats from previous play session, if any.
             LoadStats();
+            //Welcome the user by their name, if any. Default is User.
             welcomeLabel.Text = "Welcome back, " + Player.userName;
 
+            //Setup event handlers
             this.quickMatchButton.MouseHover += new System.EventHandler(CommonEvents.menuButton_MouseHover);
             this.quickMatchButton.MouseLeave += new System.EventHandler(CommonEvents.menuButton_MouseLeave);
 
@@ -37,39 +49,50 @@ namespace Tic_Tac_Toe
 
         }
 
+        //Starts the quick match form
         private void quickMatchButton_Click(object sender, EventArgs e)
         {             
             QuickMatchForm qmForm = new QuickMatchForm();
             qmForm.ShowDialog();
+            //Updates the stats after the play session.
             UpdateStatLabels();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
         {
+            //Save stats before we exit.
             SaveStats();
             this.Close();
         }
 
+        //Prompts the user for a profile picture
         private void changePictureButton_Click(object sender, EventArgs e)
         {        
+            //If the user selects a file successfully, we can assign the picture
             if (profilePictureDialog.ShowDialog() == DialogResult.OK)
             {
+                //We get the file and create a new bitmap from it
                 string picFile = profilePictureDialog.FileName;
                 Bitmap profilePic = new Bitmap(picFile);
+                //We assign the picture to the player's profile and update the picturebox
                 Player.profilePicture = profilePic;
                 profilePictureBox.Image = profilePic;
+                //Save file path of image to settings
                 Properties.Settings.Default["ProfileImage"] = picFile;
                 Properties.Settings.Default.Save();
             }
         }
 
+        //Opens the tournament form
         private void tournamentButton_Click(object sender, EventArgs e)
         {         
             TournamentForm tournamentForm = new TournamentForm();
             tournamentForm.ShowDialog();
+            //Update stats after tournament.
             UpdateStatLabels();
         }
 
+        //Updates the stat labels on the main form.
         private void UpdateStatLabels()
         {
             wltLabel.Text = Player.matchWins + "/" + Player.matchLoss + "/" + Player.matchTies;
@@ -77,6 +100,7 @@ namespace Tic_Tac_Toe
             tLossLabel.Text = Player.tournamentsLost.ToString();
         }
 
+        //Writes all the player's stats to a file called "player_stats.txt".
         private void SaveStats()
         {
             using (StreamWriter sw = new StreamWriter("player_stats.txt"))
@@ -90,6 +114,7 @@ namespace Tic_Tac_Toe
             }
         }
 
+        //Sees if windows form's executable path has the player_stats.txt file, and if it does, load the data in
         private void LoadStats()
         {
             if (File.Exists(Path.GetDirectoryName(Application.ExecutablePath) + "\\player_stats.txt"))
@@ -103,33 +128,43 @@ namespace Tic_Tac_Toe
                     Player.tournamentsWon = int.Parse(sr.ReadLine());
                     Player.tournamentsLost = int.Parse(sr.ReadLine());
                 }
+                //Update the stat labels after everything is loaded.
                 UpdateStatLabels();
             }
             else
+                //All the numerical stats will default to 0, we just need to assign a default
+                //username, which is User in this case.
                 Player.userName = "User";
         }
 
+        //Loads the player's portrait
         private void LoadPlayerPortrait()
         {
             if (File.Exists((string)Properties.Settings.Default["ProfileImage"]))
             {
+                //Gets the image from the file path we stored in settings from before
                 Player.profilePicture = new Bitmap((string)Properties.Settings.Default["ProfileImage"]);
                 profilePictureBox.Image = Player.profilePicture;
             }
             else
             {
+                //Clear the settings as the image no longer exists there
                 Properties.Settings.Default["ProfileImage"] = "";
+                //Default image
                 Player.profilePicture = Properties.Resources.usericon;
                 profilePictureBox.Image = Player.profilePicture;
             }
         }
 
+        //Prompts the user to change their name
         private void changeNameLabel_Click(object sender, EventArgs e)
         {
             NamePrompt namePrompt = new NamePrompt();
             namePrompt.ShowDialog();
+            //Make sure the length is adequate
             if (namePrompt.userName.Length > 0)
             {
+                //Assign the name and update the label.
                 Player.userName = namePrompt.userName;
                 welcomeLabel.Text = "Welcome back, " + Player.userName;
             }

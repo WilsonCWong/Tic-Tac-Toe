@@ -266,17 +266,16 @@
             // 
             // aiNameLabel
             // 
-            this.aiNameLabel.AutoSize = true;
             this.aiNameLabel.BackColor = System.Drawing.Color.Transparent;
             this.aiNameLabel.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aiNameLabel.ForeColor = System.Drawing.Color.White;
             this.aiNameLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.aiNameLabel.Location = new System.Drawing.Point(832, 12);
+            this.aiNameLabel.Location = new System.Drawing.Point(702, 12);
             this.aiNameLabel.Name = "aiNameLabel";
-            this.aiNameLabel.Size = new System.Drawing.Size(30, 22);
+            this.aiNameLabel.Size = new System.Drawing.Size(160, 22);
             this.aiNameLabel.TabIndex = 14;
             this.aiNameLabel.Text = "AI";
-            this.aiNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.aiNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // playerNameLabel
             // 

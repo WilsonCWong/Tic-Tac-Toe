@@ -15,6 +15,7 @@ namespace Tic_Tac_Toe
         //Calculates the AI's next move depending on the difficulty of the game.
         public bool CalculateMove(ref Board board, Difficulty diff)
         {
+            //Use different AI according to difficulty
             switch (diff)
             {
                 case Difficulty.Easy:
@@ -34,7 +35,7 @@ namespace Tic_Tac_Toe
         }
 
         //Returns the opposite piece of the one supplied by the parameter. 
-        public Piece GetOppositePiece(Piece p)
+        private Piece GetOppositePiece(Piece p)
         {
             Piece otherPiece;
             switch (p)
@@ -198,7 +199,8 @@ namespace Tic_Tac_Toe
                         piecePlaced = true;
                         selfVictory = true;
                         break;
-                    } //This method checks the same, but with the player instead
+                    } //This checks the same thing as the previous if statement, but with the player.
+                    //This is the part that the AI determines whether or not it should block the player
                     else if (!selfVictory && playerColMatches == rowLength - 1 && colMatches == 0)
                     {
                         cellCoord = GetFreeCellRow(ref board, row);
@@ -291,6 +293,7 @@ namespace Tic_Tac_Toe
                     return new Vector2D(row, selectedCol);
                 }
             }
+            //This should NEVER return.
             return new Vector2D(-1, -1);
         }
 

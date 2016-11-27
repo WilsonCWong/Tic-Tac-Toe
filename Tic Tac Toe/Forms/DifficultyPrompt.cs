@@ -17,10 +17,12 @@ namespace Tic_Tac_Toe
         public DifficultyPrompt()
         {
             InitializeComponent();
+            //Init event handlers
             this.okButton.MouseHover += CommonEvents.menuButton_MouseHover;
             this.okButton.MouseLeave += CommonEvents.menuButton_MouseLeave;
         }
 
+        //Sets the selected difficulty
         private void okButton_Click(object sender, EventArgs e)
         {
             selectedDifficulty = difficultyDropdown.SelectedIndex;
@@ -29,6 +31,8 @@ namespace Tic_Tac_Toe
 
         private void DifficultyPrompt_Load(object sender, EventArgs e)
         {
+            //Give a default value, as a failsafe for if the player doesn't select
+            //anything or somehow closes this form.
             difficultyDropdown.SelectedIndex = 0;
         }
     }

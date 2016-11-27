@@ -12,12 +12,14 @@ namespace Tic_Tac_Toe
 {
     public partial class NamePrompt : Form
     {
+        //The name
         public string userName;
  
 
         public NamePrompt()
         {
             InitializeComponent();
+            //Init event handlers
             this.okButton.MouseHover += CommonEvents.menuButton_MouseHover;
             this.okButton.MouseLeave += CommonEvents.menuButton_MouseLeave;
 
@@ -27,12 +29,14 @@ namespace Tic_Tac_Toe
 
         private void okButton_Click(object sender, EventArgs e)
         {
+            //Sees if length is adequate
             if (nameTextBox.Text.Length == 0)
             {
                 MessageBox.Show("You need to put something in the field!");
             }
             else
             {
+                //Assign the name
                 userName = nameTextBox.Text;
                 this.Close();
             }        
@@ -40,6 +44,7 @@ namespace Tic_Tac_Toe
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            //Give a blank name if canceled
             userName = "";
             this.Close();
         }

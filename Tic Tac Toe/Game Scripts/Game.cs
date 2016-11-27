@@ -9,6 +9,7 @@ namespace Tic_Tac_Toe
 {
     public class Game
     {
+        //Constants 
         const float AI_DELAY = 1.0f;
         const float DELAY_SPEED = 0.1f;
         const float PLAYER_TIME_LIMIT = 20.0f;
@@ -58,6 +59,7 @@ namespace Tic_Tac_Toe
             AIDelay -= delaySpeed;
         }
 
+        //Reduce the player's timer
         public void PlayerTimerCountdown()
         {
             PlayerTimer -= delaySpeed;
@@ -71,12 +73,13 @@ namespace Tic_Tac_Toe
             else
             {
                 CurrentPlayer = Participant.Player;
+                //Reset the player's time limit
                 PlayerTimer = PLAYER_TIME_LIMIT;
             }
         }
 
         //Get the opposite piece given a piece as a parameter
-        public static Piece GetOppositePiece(Piece p)
+        private Piece GetOppositePiece(Piece p)
         {
             Piece otherPiece;
             switch (p)
@@ -105,13 +108,16 @@ namespace Tic_Tac_Toe
             //Check rows
             for (int row = 0; row < gameBoard.Grid.GetLength(0); row++)
             {
+                //Starting cell used for reference
                 Cell startCell = gameBoard.Grid[row, 0];
                 for (int col = 1; col < gameBoard.Grid.GetLength(1); col++)
                 {
+                    //Sees if starting cell is empty, or if the piece in the next cell doesn't match
                     if (startCell.CellPiece == Piece.None || startCell.CellPiece != gameBoard.Grid[row, col].CellPiece)
                         break;
                     else if (col == gameBoard.Grid.GetLength(1) - 1)
                     {
+                        //If all of them match, we know there is 3 in this row
                         WinnerPiece = startCell.CellPiece;
                         return State.Won;
                     }     
@@ -133,6 +139,7 @@ namespace Tic_Tac_Toe
                 }
             }
           
+            //Determines the amount of diagonal spaces there are, which is the smaller value of the columns or rows
             var diagonalSpaces = (gameBoard.Grid.GetLength(0) < gameBoard.Grid.GetLength(1)) ?
                 gameBoard.Grid.GetLength(0) : gameBoard.Grid.GetLength(1);
 
@@ -149,9 +156,11 @@ namespace Tic_Tac_Toe
                 }
             }
 
-            Cell topright = gameBoard.Grid[0, diagonalSpaces - 1];
-            int diagonalCol = diagonalSpaces - 1;
             //Check for right diagonal
+            Cell topright = gameBoard.Grid[0, diagonalSpaces - 1];
+            //The columns go to 0 as we go down the rows
+            int diagonalCol = diagonalSpaces - 1;
+            //Rows goes to the max amount of diagonal cells as we subtract from the columns
             for (int row = 0; row < diagonalSpaces; row++)
             {
                 if (topright.CellPiece == Piece.None || topright.CellPiece != gameBoard.Grid[row, diagonalCol].CellPiece)
@@ -161,6 +170,7 @@ namespace Tic_Tac_Toe
                     WinnerPiece = topright.CellPiece;
                     return State.Won;
                 }
+                //Column approaches 0
                 diagonalCol--;
             }
 
@@ -172,20 +182,24 @@ namespace Tic_Tac_Toe
                 {
                     if (gameBoard.Grid[row,col].CellPiece == Piece.None)
                     {
+                        //Found an empty slot
                         emptySlots = true;
                         break;
                     }
                 }
+                //We know there is no tie, so we break
                 if (emptySlots) break;
             }
 
             if (!emptySlots)
             {
+                //There are no empty slots, so it has to be a tie
                 WinnerPiece = Piece.None;
                 return State.Tie;
             }
             else
             {
+                //Empty slots, and no winner returned, so we are still playing
                 WinnerPiece = Piece.None;
                 return State.Playing;
             }
@@ -220,12 +234,16 @@ namespace Tic_Tac_Toe
         }
     }
 
+    //Enum for the pieces.
     public enum Piece { None, X, O }
+    //Enum for the difficulties
     public enum Difficulty { Easy, Normal, Advanced }
 
-    //A cell of the game board.
+    //A cell of the game board. It is a class because we need to reference the specific instances
+    //of the cells.
     public class Cell
     {
+        //The piece in that cell.
         public Piece CellPiece { get; set; }
         public Cell(Piece p)
         {
@@ -233,7 +251,7 @@ namespace Tic_Tac_Toe
         }
     }
 
-    //A vector for storing coordinates.
+    //A vector for storing xy coordinates.
     public struct Vector2D
     {
         public int x;

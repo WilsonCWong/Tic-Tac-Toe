@@ -225,6 +225,48 @@
   <ItemGroup>
     <None Include="Resources\aipicture.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DefeatMusic.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Victory.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VictoryMusic.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BattleMusic.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChampionMusic.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Defeat.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BattleMusic.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChampionMusic.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Defeat.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DefeatMusic.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Victory.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VictoryMusic.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Preparation.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\championai.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

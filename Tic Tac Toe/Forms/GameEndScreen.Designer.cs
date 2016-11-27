@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.playAgainButton = new System.Windows.Forms.Button();
             this.resultPictureBox = new System.Windows.Forms.PictureBox();
             this.forfeitButton = new System.Windows.Forms.Button();
+            this.musicDelayTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.resultPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,6 +81,10 @@
             this.forfeitButton.UseVisualStyleBackColor = false;
             this.forfeitButton.Click += new System.EventHandler(this.forfeitButton_Click);
             // 
+            // musicDelayTimer
+            // 
+            this.musicDelayTimer.Tick += new System.EventHandler(this.musicDelayTimer_Tick);
+            // 
             // GameEndScreen
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -93,6 +99,7 @@
             this.Name = "GameEndScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "End Screen";
+            this.Load += new System.EventHandler(this.GameEndScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.resultPictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -102,5 +109,6 @@
         private System.Windows.Forms.Button playAgainButton;
         private System.Windows.Forms.PictureBox resultPictureBox;
         private System.Windows.Forms.Button forfeitButton;
+        private System.Windows.Forms.Timer musicDelayTimer;
     }
 }

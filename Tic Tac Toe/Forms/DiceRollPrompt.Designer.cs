@@ -154,13 +154,12 @@
             // 
             // aiNameLabel
             // 
-            this.aiNameLabel.AutoSize = true;
             this.aiNameLabel.BackColor = System.Drawing.Color.Transparent;
             this.aiNameLabel.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aiNameLabel.ForeColor = System.Drawing.Color.White;
-            this.aiNameLabel.Location = new System.Drawing.Point(621, 97);
+            this.aiNameLabel.Location = new System.Drawing.Point(572, 97);
             this.aiNameLabel.Name = "aiNameLabel";
-            this.aiNameLabel.Size = new System.Drawing.Size(30, 22);
+            this.aiNameLabel.Size = new System.Drawing.Size(128, 22);
             this.aiNameLabel.TabIndex = 0;
             this.aiNameLabel.Text = "AI";
             this.aiNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

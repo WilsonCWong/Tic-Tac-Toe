@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Media;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,6 +13,8 @@ namespace Tic_Tac_Toe
 {
     public partial class QuickMatchForm : Form
     {
+        //Initialize variables
+        SoundPlayer soundPlayer = new SoundPlayer();
         const float END_SCREEN_DELAY = 1.0f;
         Game currentGame;
         float endScreenDelay = END_SCREEN_DELAY;
@@ -34,6 +37,10 @@ namespace Tic_Tac_Toe
 
         private void StartGame()
         {
+            //Play the preparation music
+            soundPlayer.Stream = Properties.Resources.Preparation;
+            soundPlayer.Play();
+
             //Prompt the player for the difficulty of the match
             DifficultyPrompt diffPrompt = new DifficultyPrompt();
             diffPrompt.ShowDialog();
@@ -63,14 +70,21 @@ namespace Tic_Tac_Toe
             //Start the game timers
             gameTimer.Start();
             countdownTimer.Start();
+
+            //Play battle music
+            soundPlayer.Stop();
+            soundPlayer.Stream = Properties.Resources.BattleMusic;
+            soundPlayer.PlayLooping();
         }
 
+        //Checks to see if there is a winner
         private void CheckWinner()
         {
             if (currentGame.GameState != Game.State.Playing)
             {
                 gameTimer.Stop();
                 countdownTimer.Stop();
+                //Check happens at the endScreen_Tick event handler
                 endScreenTimer.Start();
             }
         }
@@ -92,6 +106,7 @@ namespace Tic_Tac_Toe
             }
             else if (currentGame.CurrentPlayer == Game.Participant.Player && currentGame.PlayerTimer <= 0)
             {
+                //Ran out of time, player loses turn
                 currentGame.SwitchTurns();
                 timerLabel.Text = "Player lost a turn after failing to respond.";
             }
@@ -122,6 +137,7 @@ namespace Tic_Tac_Toe
             }
         }
 
+        //Changes cell color depending on what is in the cell
         private void cell_Enter(object sender, EventArgs e)
         {
             PictureBox pictureBox = (PictureBox)sender;
@@ -138,6 +154,7 @@ namespace Tic_Tac_Toe
 
         }
 
+        //Changes back to default control color for the cell
         private void cell_Exit(object sender, EventArgs e)
         {
             PictureBox pictureBox = (PictureBox)sender;
@@ -207,19 +224,23 @@ namespace Tic_Tac_Toe
 
         }
 
+        //Updates the timer display
         private void UpdateTimer()
         {
             timerLabel.Text = String.Format("Time Left: {0:N1}", currentGame.PlayerTimer);
         }
 
+        //Determines if player wants to surrender
         private void surrenderButton_Click(object sender, EventArgs e)
         {           
+            //Stop the game
             gameTimer.Stop();
             countdownTimer.Stop();
             SurrenderPrompt sPrompt = new SurrenderPrompt();
             sPrompt.ShowDialog();
             if (sPrompt.selectedChoice == 0)
             {
+                //Player surrenders, counts as loss
                 Player.matchLoss += 1;
                 this.Close();
             }
@@ -232,16 +253,23 @@ namespace Tic_Tac_Toe
             endScreenDelay -= 1.0f;
             if (endScreenDelay <= 0)
             {
+                //Check only happens once, so we reset the timer.
                 endScreenTimer.Stop();
                 endScreenDelay = END_SCREEN_DELAY;
                 GameEndScreen gameEndScreen = new GameEndScreen();
                 PictureBox resultPictureBox = (PictureBox)gameEndScreen.Controls["resultPictureBox"];
+                //Used to see if player wants to play again.
                 bool quitting = false;
                 if (currentGame.WinnerPiece == currentGame.PlayerPiece)
                 {
+                    //Win screen
                     Player.matchWins += 1;
+                    //Assign the appropriate info to the end screen
+                    gameEndScreen.soundPlayer.Stream = Properties.Resources.VictoryAnnouncer;
+                    gameEndScreen.gameResult = currentGame.GameState;
                     resultPictureBox.Image = Properties.Resources.Victory;
                     gameEndScreen.ShowDialog();
+                    //See if the player wants to play again
                     if (gameEndScreen.selectedChoice == 0)
                         quitting = false;
                     else
@@ -249,7 +277,9 @@ namespace Tic_Tac_Toe
                 }
                 else if (currentGame.WinnerPiece == Piece.None)
                 {
+                    //Tie screen
                     Player.matchTies += 1;
+                    gameEndScreen.gameResult = currentGame.GameState;
                     resultPictureBox.Image = Properties.Resources.Tie;
                     gameEndScreen.ShowDialog();
                     if (gameEndScreen.selectedChoice == 0)
@@ -259,20 +289,27 @@ namespace Tic_Tac_Toe
                 }
                 else
                 {
+                    //Lose screen
                     Player.matchLoss += 1;
+                    currentGame.GameState = Game.State.Lost;
+                    gameEndScreen.soundPlayer.Stream = Properties.Resources.DefeatAnnouncer;
+                    gameEndScreen.gameResult = currentGame.GameState;
                     resultPictureBox.Image = Properties.Resources.Defeat;
                     gameEndScreen.ShowDialog();
+                    //See if the player wants to play again
                     if (gameEndScreen.selectedChoice == 0)
                         quitting = false;
                     else
                         quitting = true;
                 }
 
+                //Determine whether to restart the game or not
                 if (quitting)
                     this.Close();
                 else
                 {
                     StartGame();
+                    //Repaint the grid so it's empty again
                     RepaintGame();
                 }               
             }     

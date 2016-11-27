@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Media;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,13 +13,21 @@ namespace Tic_Tac_Toe
 {
     public partial class TournamentForm : Form
     {
+        //Initialize all variables
         const float RESULTS_SCREEN_DELAY = 1.0f;
         const int NUMBER_OF_T_MATCHES = 6;
         const float PERCENT_OF_MATCHES_NORMAL = 0.6f;
 
+        SoundPlayer soundPlayer = new SoundPlayer();
         Game currentGame;
         int matchIndex;
+        //How much to delay the end screen by
         float resultDelay = RESULTS_SCREEN_DELAY;
+        
+        bool championMatchStarted = false;
+        //Used to prevent music from abruptly cutting off and restarting
+        bool championMusicPlayed = false;
+        bool battleMusicPlayed = false;
 
         Piece playerPiece;
         Difficulty[] matchDifficulty;
@@ -26,6 +35,11 @@ namespace Tic_Tac_Toe
         public TournamentForm()
         {
             InitializeComponent();
+
+            //Play the preparation music
+            soundPlayer.Stream = Properties.Resources.Preparation;
+            soundPlayer.Play();
+
             //Initialize button events, etc.
             surrenderButton.MouseHover += CommonEvents.menuButton_MouseHover;
             surrenderButton.MouseLeave += CommonEvents.menuButton_MouseLeave;
@@ -56,7 +70,7 @@ namespace Tic_Tac_Toe
                 matchDifficulty[i] = Difficulty.Easy;
             }
 
-            for (int i = easyMatches; i < normalMatches; i++)
+            for (int i = easyMatches; i < normalMatches + 1; i++)
             {
                 matchDifficulty[i] = Difficulty.Normal;
             }
@@ -72,8 +86,11 @@ namespace Tic_Tac_Toe
             //Repaint the grid
             RepaintGame();
 
+            //Determine if this is the champion match
+            championMatchStarted = (matchIndex + 1 == NUMBER_OF_T_MATCHES) ? true : false;
+
             //Display the proper round
-            roundLabel.Text = (matchIndex + 1 == NUMBER_OF_T_MATCHES) ? "Final Round" : "Round " + (matchIndex + 1);
+            roundLabel.Text = (championMatchStarted) ? "Final Round" : "Round " + (matchIndex + 1);
 
             Console.WriteLine(matchDifficulty[matchIndex].ToString());
 
@@ -87,6 +104,15 @@ namespace Tic_Tac_Toe
 
             //Determine who goes first
             DiceRollPrompt diceRoll = new DiceRollPrompt();
+            if (championMatchStarted)
+            {  
+                //Change the controls and time the music for the reveal of the champion
+                if (!championMusicPlayed)
+                    soundPlayer.Stop();
+                diceRoll.Controls["aiNameLabel"].Text = "Champion";
+                PictureBox pb = diceRoll.Controls["aiPictureBox"] as PictureBox;
+                pb.Image = Properties.Resources.championai;
+            }
             diceRoll.ShowDialog();
             currentGame.CurrentPlayer = diceRoll.firstToGo;
 
@@ -97,13 +123,35 @@ namespace Tic_Tac_Toe
             //Start the game timers
             gameTimer.Start();
             countdownTimer.Start();
+
+            //Play champion music for last fight, and set up champion profile
+            if (!championMusicPlayed && championMatchStarted)
+            {
+                soundPlayer.Stop();
+                soundPlayer.Stream = Properties.Resources.ChampionMusic;
+                soundPlayer.PlayLooping();
+                championMusicPlayed = true;
+                aiNameLabel.Text = "The Champion";
+                aiPictureBox.Image = Properties.Resources.championai;
+            }
+            //Only battle music at beginning
+            else if (!battleMusicPlayed)
+            {
+                soundPlayer.Stop();
+                soundPlayer.Stream = Properties.Resources.BattleMusic;
+                soundPlayer.PlayLooping();
+                battleMusicPlayed = true;
+            }
         }
 
         //Check to see if there is a winner for the round.
         private void CheckWinner()
         {
+            //We know there's a winner is the game isn't playing anymore
             if (currentGame.GameState != Game.State.Playing)
             {
+                //Check for who won actually happens at the result timer so it
+                //isn't instant and jarring for the user.
                 gameTimer.Stop();
                 countdownTimer.Stop();
                 resultTimer.Start();        
@@ -127,6 +175,7 @@ namespace Tic_Tac_Toe
             }
             else if (currentGame.CurrentPlayer == Game.Participant.Player && currentGame.PlayerTimer <= 0)
             {
+                //The player has run out of time, so we switch turns.
                 currentGame.SwitchTurns();
                 timerLabel.Text = "Player lost a turn after failing to respond.";
             }
@@ -157,6 +206,7 @@ namespace Tic_Tac_Toe
             }
         }
 
+        //Changes the color of the cell box depending on it's occupation status
         private void cell_Enter(object sender, EventArgs e)
         {
             PictureBox pictureBox = (PictureBox)sender;
@@ -172,7 +222,8 @@ namespace Tic_Tac_Toe
             }
 
         }
-
+        
+        //Change it back to the default control color when mouse leaves cell
         private void cell_Exit(object sender, EventArgs e)
         {
             PictureBox pictureBox = (PictureBox)sender;
@@ -242,18 +293,20 @@ namespace Tic_Tac_Toe
 
         }
 
+        //Updates the timer display
         private void UpdateTimer()
         {
             timerLabel.Text = String.Format("Time Left: {0:N1}", currentGame.PlayerTimer);
         }
 
+        //Click event handler for the surrender button
         private void surrenderButton_Click(object sender, EventArgs e)
         {
-            surrenderButton.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
             gameTimer.Stop();
             countdownTimer.Stop();
             SurrenderPrompt sPrompt = new SurrenderPrompt();
             sPrompt.ShowDialog();
+            //If the user confirms surrender, count as lost
             if (sPrompt.selectedChoice == 0)
             {
                 Player.tournamentsLost += 1;
@@ -269,15 +322,19 @@ namespace Tic_Tac_Toe
             resultDelay -= 1.0f;
             if (resultDelay <= 0)
             {
+                //Stop the timer so it only checks once, and resets it for next use
                 resultTimer.Stop();
                 resultDelay = RESULTS_SCREEN_DELAY;
                 if (currentGame.WinnerPiece == currentGame.PlayerPiece)
                 {
+                    //They've won their current match
                     Player.matchWins += 1;
                     if (matchIndex != NUMBER_OF_T_MATCHES - 1)
                     {
+                        //Asks the player if they want to play the next match of tournament
                         TournamentMatchPrompt tPrompt = new TournamentMatchPrompt();
                         tPrompt.ShowDialog();
+                        //0 = Yes, 1 = No
                         if (tPrompt.selectedChoice == 0)
                         {
                             matchIndex++;
@@ -291,11 +348,17 @@ namespace Tic_Tac_Toe
                     }
                     else
                     {
+                        //Win tournament
+                        soundPlayer.Stop();
                         Player.tournamentsWon += 1;
+                        //Win screen setup (lose screen similar)
                         GameEndScreen winScreen = new GameEndScreen();
+                        winScreen.gameResult = currentGame.GameState;
+                        winScreen.soundPlayer.Stream = Properties.Resources.VictoryAnnouncer;
                         PictureBox winPicBox = (PictureBox)winScreen.Controls["resultPictureBox"];
                         winPicBox.Image = Properties.Resources.Victory;
                         winScreen.ShowDialog();
+                        //See if user wants to play again or not
                         if (winScreen.selectedChoice == 0)
                             StartGame();
                         else
@@ -304,20 +367,38 @@ namespace Tic_Tac_Toe
                 }
                 else if (currentGame.WinnerPiece == Piece.None)
                 {
+                    //Player needs to play until tie is broken.
                     Player.matchTies += 1;
                     MessageBox.Show("You have tied with the opponent. You need to rematch until there is a winner.");
                     StartGame();
                 }
                 else
                 {
+                    //Lost tournament
+                    soundPlayer.Stop();
                     Player.matchLoss += 1;
                     Player.tournamentsLost += 1;
+                    currentGame.GameState = Game.State.Lost;
                     GameEndScreen lostScreen = new GameEndScreen();
+                    lostScreen.gameResult = currentGame.GameState;
+                    lostScreen.soundPlayer.Stream = Properties.Resources.DefeatAnnouncer;
                     PictureBox losePicBox = (PictureBox)lostScreen.Controls["resultPictureBox"];
                     losePicBox.Image = Properties.Resources.Defeat;
                     lostScreen.ShowDialog();
+                    //If the user wants to play again, it will be with same piece
                     if (lostScreen.selectedChoice == 0)
+                    {
+                        //Reset everything to defaults
+                        //Dispose of the form so that the music doesn't play after the user closes
+                        lostScreen.Dispose();
+                        matchIndex = 0;
+                        championMatchStarted = false;
+                        championMusicPlayed = false;
+                        battleMusicPlayed = false;
+                        aiNameLabel.Text = "AI";
+                        aiPictureBox.Image = Properties.Resources.aipicture;
                         StartGame();
+                    }
                     else
                         this.Close();
                 }

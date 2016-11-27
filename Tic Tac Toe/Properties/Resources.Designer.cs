@@ -71,6 +71,15 @@ namespace Tic_Tac_Toe.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream BattleMusic {
+            get {
+                return ResourceManager.GetStream("BattleMusic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap blurredbg {
@@ -93,10 +102,47 @@ namespace Tic_Tac_Toe.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap championai {
+            get {
+                object obj = ResourceManager.GetObject("championai", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream ChampionMusic {
+            get {
+                return ResourceManager.GetStream("ChampionMusic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Defeat {
             get {
                 object obj = ResourceManager.GetObject("Defeat", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream DefeatAnnouncer {
+            get {
+                return ResourceManager.GetStream("DefeatAnnouncer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream DefeatMusic {
+            get {
+                return ResourceManager.GetStream("DefeatMusic", resourceCulture);
             }
         }
         
@@ -181,6 +227,15 @@ namespace Tic_Tac_Toe.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Preparation {
+            get {
+                return ResourceManager.GetStream("Preparation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Tie {
@@ -207,6 +262,24 @@ namespace Tic_Tac_Toe.Properties {
             get {
                 object obj = ResourceManager.GetObject("Victory", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream VictoryAnnouncer {
+            get {
+                return ResourceManager.GetStream("VictoryAnnouncer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream VictoryMusic {
+            get {
+                return ResourceManager.GetStream("VictoryMusic", resourceCulture);
             }
         }
         
