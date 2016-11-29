@@ -100,8 +100,6 @@ namespace Tic_Tac_Toe
             //Display the proper round
             roundLabel.Text = (championMatchStarted) ? "Final Round" : "Round " + (matchIndex + 1);
 
-            Console.WriteLine(matchDifficulty[matchIndex].ToString());
-
             //Assign the player's piece
             currentGame.PlayerPiece = playerPiece;
 
@@ -179,6 +177,9 @@ namespace Tic_Tac_Toe
                 //Repaint the board so the AI's piece shows up.
                 RepaintGame();
                 currentGame.GameState = currentGame.CheckVictory();
+                //We know the AI has won
+                if (currentGame.GameState == Game.State.Won)
+                    currentGame.GameState = Game.State.Lost;
                 CheckWinner();      
             }
             else if (currentGame.CurrentPlayer == Game.Participant.Player && currentGame.PlayerTimer <= 0)
@@ -329,11 +330,12 @@ namespace Tic_Tac_Toe
         {
             resultDelay -= 1.0f;
             if (resultDelay <= 0)
-            {
+            {           
+                RepaintGame();
                 //Stop the timer so it only checks once, and resets it for next use
                 resultTimer.Stop();
                 resultDelay = RESULTS_SCREEN_DELAY;
-                if (currentGame.WinnerPiece == currentGame.PlayerPiece)
+                if (currentGame.GameState == Game.State.Won)
                 {
                     //They've won their current match
                     Player.matchWins += 1;
@@ -353,6 +355,8 @@ namespace Tic_Tac_Toe
                             Player.tournamentsLost += 1;
                             this.Close();
                         }
+                        //Clear the screen from memory
+                        tPrompt.Dispose();
                     }
                     else
                     {
@@ -368,25 +372,33 @@ namespace Tic_Tac_Toe
                         winScreen.ShowDialog();
                         //See if user wants to play again or not
                         if (winScreen.selectedChoice == 0)
+                        {
+                            //Play the preparation music
+                            soundPlayer.Stream = Properties.Resources.Preparation;
+                            soundPlayer.Play();
                             StartGame();
+                        }
                         else
+                        {
                             this.Close();
+                        }
+                        //Clear the screen from memory
+                        winScreen.Dispose();
                     }
                 }
-                else if (currentGame.WinnerPiece == Piece.None)
+                else if (currentGame.GameState == Game.State.Tie)
                 {
                     //Player needs to play until tie is broken.
                     Player.matchTies += 1;
                     MessageBox.Show("You have tied with the opponent. You need to rematch until there is a winner.");
                     StartGame();
                 }
-                else if (currentGame.WinnerPiece == currentGame.AIPiece)
+                else if (currentGame.GameState == Game.State.Lost)
                 {
                     //Lost tournament
                     soundPlayer.Stop();
                     Player.matchLoss += 1;
                     Player.tournamentsLost += 1;
-                    currentGame.GameState = Game.State.Lost;
                     GameEndScreen lostScreen = new GameEndScreen();
                     lostScreen.gameResult = currentGame.GameState;
                     lostScreen.soundPlayer.Stream = Properties.Resources.DefeatAnnouncer;
@@ -396,9 +408,10 @@ namespace Tic_Tac_Toe
                     //If the user wants to play again, it will be with same piece
                     if (lostScreen.selectedChoice == 0)
                     {
+                        //Play the preparation music
+                        soundPlayer.Stream = Properties.Resources.Preparation;
+                        soundPlayer.Play();
                         //Reset everything to defaults
-                        //Dispose of the form so that the music doesn't play after the user closes
-                        lostScreen.Dispose();
                         matchIndex = 0;
                         championMatchStarted = false;
                         championMusicPlayed = false;
@@ -408,7 +421,11 @@ namespace Tic_Tac_Toe
                         StartGame();
                     }
                     else
+                    {
                         this.Close();
+                    }
+                    //Clear the screen from memory
+                    lostScreen.Dispose();
                 }
             }
         }

@@ -77,6 +77,8 @@ namespace Tic_Tac_Toe
             //Updates the stats after the play session.
             UpdateStatLabels();
 
+            //Clear the form from memory, just in case
+            qmForm.Dispose();
             soundPlayer.Stop();
             //Play and loop the background music
             soundPlayer.Stream = Properties.Resources.retroGroveLoop;
@@ -116,6 +118,8 @@ namespace Tic_Tac_Toe
             //Update stats after tournament.
             UpdateStatLabels();
 
+            //Clear the form from memory
+            tournamentForm.Dispose();
             soundPlayer.Stop();
             //Play and loop the background music
             soundPlayer.Stream = Properties.Resources.retroGroveLoop;
@@ -181,7 +185,7 @@ namespace Tic_Tac_Toe
                 //Clear the settings as the image no longer exists there
                 Properties.Settings.Default["ProfileImage"] = "";
                 //Default image
-                Player.profilePicture = Properties.Resources.filthyFrankPinkGuy;
+                Player.profilePicture = Properties.Resources.usericon;
                 profilePictureBox.Image = Player.profilePicture;
             }
         }

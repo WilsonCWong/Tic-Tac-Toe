@@ -110,6 +110,9 @@ namespace Tic_Tac_Toe
                 //Repaint the board so the AI's piece shows up.
                 RepaintGame();
                 currentGame.GameState = currentGame.CheckVictory();
+                //We know the AI has won
+                if (currentGame.GameState == Game.State.Won)
+                    currentGame.GameState = Game.State.Lost;
                 CheckWinner();
             }
             else if (currentGame.CurrentPlayer == Game.Participant.Player && currentGame.PlayerTimer <= 0)
@@ -261,6 +264,8 @@ namespace Tic_Tac_Toe
             endScreenDelay -= 1.0f;
             if (endScreenDelay <= 0)
             {
+                //Repaint the game again.
+                RepaintGame();
                 //Check only happens once, so we reset the timer.
                 endScreenTimer.Stop();
                 endScreenDelay = END_SCREEN_DELAY;
@@ -297,9 +302,10 @@ namespace Tic_Tac_Toe
                 }
                 else if (currentGame.WinnerPiece == currentGame.AIPiece)
                 {
+                    //Make sure the board is up to date.
+                    RepaintGame();
                     //Lose screen
                     Player.matchLoss += 1;
-                    currentGame.GameState = Game.State.Lost;
                     gameEndScreen.soundPlayer.Stream = Properties.Resources.DefeatAnnouncer;
                     gameEndScreen.gameResult = currentGame.GameState;
                     resultPictureBox.Image = Properties.Resources.Defeat;
@@ -310,7 +316,8 @@ namespace Tic_Tac_Toe
                     else
                         quitting = true;
                 }
-
+                //Clear the end screen from memory.
+                gameEndScreen.Dispose();
                 //Determine whether to restart the game or not
                 if (quitting)
                     this.Close();

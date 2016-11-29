@@ -165,10 +165,10 @@ namespace Tic_Tac_Toe
                 }
             }
 
-            //Check for right diagonal
-            Cell topright = gameBoard.Grid[0, diagonalSpaces - 1];
             //The columns go to 0 as we go down the rows
             int diagonalCol = diagonalSpaces - 1;
+            //Check for right diagonal
+            Cell topright = gameBoard.Grid[0, diagonalCol];           
             //Rows goes to the max amount of diagonal cells as we subtract from the columns
             for (int row = 0; row < diagonalSpaces; row++)
             {

@@ -45,6 +45,7 @@ namespace Tic_Tac_Toe
         //Stops the music, and closes the form.
         private void playAgainButton_Click(object sender, EventArgs e)
         {
+            musicDelayTimer.Stop();
             soundPlayer.Stop();
             this.Close();
         }
@@ -52,6 +53,7 @@ namespace Tic_Tac_Toe
         //Change the choice to indicate player is done playing.
         private void forfeitButton_Click(object sender, EventArgs e)
         {
+            musicDelayTimer.Stop();
             soundPlayer.Stop();
             selectedChoice = 1;
             this.Close();
